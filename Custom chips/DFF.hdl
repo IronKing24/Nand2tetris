@@ -1,0 +1,13 @@
+CHIP DFF {
+    IN d,clk;
+    OUT q,nq;
+
+    PARTS:
+    Not(in=d,out=nd);
+    
+    Nand(a=d,b=clk,out=nand0);
+    Nand(a=nd,b=clk,out=nand1);
+
+    Nand(a=nand0,b=nand3,out=nand2,out=q);
+    Nand(a=nand1,b=nand2,out=nand3,out=nq);
+}

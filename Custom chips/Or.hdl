@@ -1,0 +1,14 @@
+/**
+Function: if((a==0)and(b==0))then out = 0, else out = 1
+*/
+
+CHIP Or {
+
+    IN a,b;
+    OUT out;
+    PARTS: 
+    Not(in=a, out=outa);
+    Not(in=b, out=outb);
+    Nand(a=outa, b=outb, out=out);
+    
+}

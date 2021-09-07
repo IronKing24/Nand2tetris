@@ -1,0 +1,40 @@
+/**
+Function:
+            if zx x=0               //16-bit zero constant
+            if nx x=!x              //bit-wise negation
+            if zy y=0               //16-bit zero constant
+            if ny y=!y              //bit-wise negation
+            if  f out=x+y           //intger two's complemnt addition
+            else  out==x&y          //bit-wise and
+            if no out=!out          //bit-wise negation
+            if out==0 zr==0 else 1  //16-bit equality comparison
+            if out<0 ng=1 else 0    //two's complemnt comparison
+comment: The overflow bit is ignored
+*/
+
+CHIP ALU {
+
+    IN x[16], y[16], zx, nx, zy, ny, f, no;
+    OUT out[16], zr, ng;
+    PARTS:
+    
+    Mux16(a=x, b[0..15]=false, sel=zx, out=zxr);//x=x or x=0
+    Not16(in=zxr, out=notx);//!x
+    Mux16(a=zxr, b=notx, sel=nx, out=nxr); //x=x or x=!x
+
+    Mux16(a=y, b[0..15]=false, sel=zy, out=zyr);//y=0
+    Not16(in=zyr, out=noty);//!y
+    Mux16(a=zyr, b=noty, sel=ny, out=nyr);//y=y or y=!y 
+
+    And16(a=nxr, b=nyr, out=andr);//x&y
+    Add16(a=nxr, b=nyr, out=addr);//x+y
+    Mux16(a=andr,b=addr, sel=f, out=fr);//x+y or x&y
+
+    Not16(in=fr, out=nfr);//!result
+    Mux16(a=fr, b=nfr, sel=no, out=r, out=out); //result or !result
+
+    Or16Way(in=r, out=nzr);//r==0
+    Not(in=nzr, out=zr);//r==0 corect signal
+    
+    And16(a[0..15]=true, b=r, out[15]=ng);//r<0
+}

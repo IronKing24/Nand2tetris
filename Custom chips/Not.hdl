@@ -1,0 +1,13 @@
+/**
+Function: if(in==0) then out = 1, else out = 0
+Author: IronJing24
+Date: 2021/8/13
+*/
+
+CHIP Not {
+    
+    IN in;
+    OUT out;
+    PARTS:
+    Nand(a=in, b=in, out=out);
+}

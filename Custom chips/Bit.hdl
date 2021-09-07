@@ -1,0 +1,13 @@
+/**
+Function: if load(L) then out (L+1) = in(L)
+          else            out (t+1) = out(t)
+*/
+
+CHIP Bit {
+
+    IN in, load;
+    OUT out;
+    PARTS:
+    Mux(a=r, b=in, sel=load, out=mux0);
+    DFF(in=mux0, out=r, out=out);
+}

@@ -1,0 +1,17 @@
+/**
+Function: if (sel = 000)      then {a,b,c, ..., h}={1,0,0,0,0,0,0,0}
+          else if (sel = 000) then {a,b,c, ..., h}={0,1,0,0,0,0,0,0}
+          else if (sel = 000) then {a,b,c, ..., h}={0,0,1,0,0,0,0,0}
+          ...
+          else if (sel = 000) then {a,b,c, ..., h}={0,0,0,0,0,0,0,1}
+*/
+
+CHIP DMux8Way {
+
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
+    PARTS:
+    DMux(in=in, sel=sel[2], a=mux0, b=mux1);
+    DMux4Way(in=mux0, sel=sel[0..1], a=a, b=b, c=c, d=d);
+    DMux4Way(in=mux1, sel=sel[0..1], a=e, b=f, c=g, d=h);
+}

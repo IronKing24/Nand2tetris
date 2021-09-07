@@ -1,0 +1,16 @@
+/**
+one emits the value stored at the memory location (register) specified by the adres.
+If load==1, then the memory location specified by address is set to the value of in.
+The loaded calue will be emitted by out from the next time step onwards.
+*/
+
+CHIP RAM8K {
+
+    IN in[16], address[13], load;
+    OUT out[16];
+    PARTS:
+    DMux(in=load,sel=address[12], a=a, b=b);
+    RAM4K(in=in,address=address[0..11],load=a,out=oa);
+    RAM4K(in=in,address=address[0..11],load=b,out=ob);
+    Mux16(a=oa, b=ob, sel=address[12], out=out);
+}

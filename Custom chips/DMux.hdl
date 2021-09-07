@@ -1,0 +1,14 @@
+/**
+Function: if (sel == 0) then {a,b} = {in,0}
+          else               {a,b} = {0,in}
+*/
+
+CHIP DMux {
+
+    IN in, sel;
+    OUT a,b;
+    PARTS:
+    Not(in=sel, out=nsel);
+    And(a=nsel, b=in, out=a);
+    And(a=sel, b=in, out=b);
+}

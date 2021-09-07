@@ -1,0 +1,16 @@
+/**
+Function: if sel = 000,001,010, ... , or 111)
+          then out= a,b,c,d, ... , or h
+Author: IronJing24
+Date: 2021/8/13
+*/
+
+CHIP Mux8Way16 {
+
+    IN a[16], b[16], c[16], d[16], e[16], f[16], g[16], h[16], sel[3];
+    OUT out[16];
+    PARTS:
+    Mux4Way16(a=a, b=b, c=c, d=d, sel = sel[0..1], out=mux0);
+    Mux4Way16(a=e, b=f, c=g, d=h, sel = sel[0..1], out=mux1);
+    Mux16(a=mux0, b=mux1, sel=sel[2], out=out);
+}

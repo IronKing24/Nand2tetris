@@ -1,0 +1,13 @@
+/**
+Function: if load(t) then out(t+1) = in(t)
+          else            out(t+1) = out(t)
+Comment: "=" is a 16-bit opration
+*/
+
+CHIP DRegiste {
+
+    IN in[16], load;
+    OUT out[16];
+    PARTS:
+    Register(in=in,load=load,out=out);
+}

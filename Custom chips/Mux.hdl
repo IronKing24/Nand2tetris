@@ -1,0 +1,16 @@
+/**
+Function: if (sel == 0) then out = a, else out = b
+Author: IronJing24
+Date: 2021/8/13
+*/
+
+CHIP Mux {
+
+    IN a,b,sel;
+    OUT out;
+    PARTS:
+    Not(in=sel, out=nsel);
+    And(a=nsel, b=a, out=and0);
+    And(a=sel, b=b, out=and1);
+    Or(a=and0, b=and1, out=out);
+}
