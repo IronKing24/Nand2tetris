@@ -1,2 +1,3 @@
 # Nand2tetris
-The Nand2tetris MOOC project with an x86 Emulator
+The HDL Specification of the chips used in the project.
+This HDL variant is to be used with the hardware simulator included in nand2tetris software suite (avilable at: https://www.nand2tetris.org/software).
