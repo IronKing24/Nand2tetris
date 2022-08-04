@@ -1,0 +1,4 @@
+1- LLVM backend and frontend
+2- Hack emulatorTools gui in Js (React Native, Angular)
+3- Rewrite the tools in Jack itself (if powerful enough)
+4- Write Jack interpreter (or JIT, for hack and x86)
