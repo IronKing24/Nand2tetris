@@ -5,4 +5,4 @@ projects/*/build
 #ignore vs conf
 projects/*/.vs
 projects/*/.vscode
-./tools
+tools/*
