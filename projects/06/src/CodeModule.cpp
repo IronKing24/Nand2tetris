@@ -87,7 +87,7 @@ namespace HackAssembler
 
     std::unique_ptr<std::string> CodeModule::jmp(std::string* label)
     {
-        return std::make_unique<std::string>(compValue->at(*label));
+        return std::make_unique<std::string>(jumpValue->at(*label));
     }
 
     CodeModule::~CodeModule()
