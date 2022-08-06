@@ -32,19 +32,19 @@ namespace HackAssembler
     }
 
 
-    void SymbolTable::addEntry(std::string* symbol, int address)
+    void SymbolTable::addEntry(const std::string *symbol, const int address)
     {
         definedLabels->insert({*symbol, address});
     }
 
-    bool* SymbolTable::contains(std::string* symbol)
+    bool SymbolTable::contains(const std::string *symbol)
     {
-        return &definedLabels->contains(*symbol);
+        return definedLabels->contains(*symbol);
     }
 
-    int* SymbolTable::getAddress(std::string* symbol)
+    int SymbolTable::getAddress(const std::string *symbol)
     {
-        return &definedLabels->at(*symbol);
+        return definedLabels->at(*symbol);
     }
 
     SymbolTable::~SymbolTable()

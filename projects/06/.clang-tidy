@@ -3,4 +3,4 @@ Checks:            '-*,clang-analyzer-apiModeling.StdCLibraryFunctions,clang-ana
 WarningsAsErrors:  ''
 HeaderFilterRegex: '.*'
 FormatStyle:       'file'
-User:              manar
+User:              IronKing24

@@ -12,7 +12,7 @@ namespace HackAssembler
         return asmFile->peek() != EOF;
     }
 
-    void Parser::advance()
+    void Parser::advance() noexcept(false)
     {
         //avoid comments and white spaces.
         while (Parser::hasMoreLines())
@@ -26,24 +26,21 @@ namespace HackAssembler
             }
 
             //trim head.
-            if (std::isspace(currentInstruction->at(0)))
+            if (bool(std::isspace(currentInstruction->at(0))))
             {
-                std::_String_iterator<std::_String_val<std::_Simple_types<char>>> textStart = std::find_if(
-                    currentInstruction->begin(), currentInstruction->end(), 
-                    [](char c) 
-                    {
-                        return !std::isspace<char>(c, std::locale::classic());
+                std::_String_iterator<std::_String_val<std::_Simple_types<char>>> textStart = 
+                    std::find_if(currentInstruction->begin(), currentInstruction->end(),[](char c) 
+                    { return !bool(std::isspace(c));
                     });
                 currentInstruction->erase(currentInstruction->begin(), textStart);
             }
             //trim tail
-            if (std::isspace(currentInstruction->at(currentInstruction->length() - 1)))
+            if (bool(std::isspace(currentInstruction->at(currentInstruction->length() - 1))))
             {
-                std::reverse_iterator<std::_String_iterator<std::_String_val<std::_Simple_types<char>>>> textEnd = std::find_if(
-                    currentInstruction->rbegin(), currentInstruction->rend(), 
-                    [](char s) 
+                std::reverse_iterator<std::_String_iterator<std::_String_val<std::_Simple_types<char>>>> textEnd = 
+                    std::find_if(currentInstruction->rbegin(), currentInstruction->rend(),[](char s) 
                     {
-                        return !std::isspace<char>(s, std::locale::classic());
+                        return !bool(std::isspace(s));
                     });
                 currentInstruction->erase(textEnd.base(), currentInstruction->end());
             }
@@ -68,7 +65,7 @@ namespace HackAssembler
         //set type
         if(currentInstruction->at(0) == '@')
         {
-            if (std::isdigit(currentInstruction->at(1)))
+            if (bool(std::isdigit(currentInstruction->at(1))))
             {
                 currentInstructionType = Parser::A_instruction;
             }
@@ -79,36 +76,44 @@ namespace HackAssembler
         }
         else
         {
-            currentInstructionType = Parser::C_instruction;
-        }
-        
-        //BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-        //tokenize the instruction
-        
-    }
-
-    Parser::instruction* Parser::instructionType()
-    {
-        return &currentInstructionType;
-    }
-    
-    std::string* Parser::symbol() 
-    {   
-        if (Parser::currentInstructionType == Parser::A_instruction || Parser::currentInstructionType == Parser::L_instruction)
-        {
-            return &Parser::currentInstructionTokens[0];
-        }
-        else
-        {
+            if (currentInstruction->find('=') != std::string::npos ||
+                currentInstruction->find(';') != std::string::npos)
+            {
+                currentInstructionType = Parser::C_instruction;
+            }
+            else
+            {
+                throw std::runtime_error(std::format("the instruction type of \"{}\" was not recognized.", currentInstruction));
+            }
             
         }
     }
-    
-    std::string* Parser::dest()
+
+    Parser::instruction Parser::instructionType() const
     {
-        if (Parser::currentInstructionType == Parser::C_instruction)
+        return currentInstructionType;
+    }
+    
+    std::unique_ptr<std::string> Parser::symbol() const noexcept(false)
+    {
+        if (currentInstructionType == Parser::A_instruction || currentInstructionType == Parser::L_instruction)
+        {
+            throw std::runtime_error(
+                std::format("the instruction type of \"{}\" doesn't have symbols.", currentInstruction));
+        }
+        else
+        {
+            return std::make_unique<std::string>(
+                currentInstruction->substr(std::size_t(1), std::size_t(currentInstruction->length() - 1)));
+        }
+    }
+    
+    std::unique_ptr<std::string> Parser::dest() const noexcept(false)
+    {
+        if (Parser::currentInstructionType != Parser::C_instruction)
         {    
-           return &Parser::currentInstructionTokens[0];
+            throw std::runtime_error(
+                std::format("the instruction type of \"{}\" doesn't have a destination.", currentInstruction));
         } 
         else
         {
@@ -116,25 +121,29 @@ namespace HackAssembler
         }
     }
 
-    std::string* Parser::comp()
+    std::unique_ptr<std::string> Parser::comp() const noexcept(false)
     {
-        if (Parser::currentInstructionType == Parser::C_instruction)
+        if (Parser::currentInstructionType != Parser::C_instruction)
         {
-            return &Parser::currentInstructionTokens[1];
+            throw std::runtime_error(
+                std::format("the instruction type of \"{}\" doesn't have a computation.", currentInstruction));
         }
         else
         {
-
+            
         }
     }
     
-    std::string* Parser::jump()
+    std::unique_ptr<std::string> Parser::jump() const noexcept(false)
     {
-
-    }
-
-    Parser::~Parser()
-    {
-        delete [] currentInstructionTokens;
+        if (Parser::currentInstructionType == Parser::C_instruction)
+        {
+            throw std::runtime_error(
+                std::format("the instruction type of \"{}\" doesn't have a jump instruction.", currentInstruction));
+        }
+        else
+        {
+            
+        }
     }
 }

@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <memory>
+#include <format>
 
 namespace HackAssembler
 {
@@ -10,18 +11,20 @@ namespace HackAssembler
     {
         public:
             /**
-             * @brief Types of possible instructions((A) value, (C)omputation, (L)abel)
+             * @brief Types of possible instructions((A) Address or value, (C) Computation, (L) Label)
+             * undefined is created to as clear-out value
              */
             enum instruction: char
             {
-                A_instruction, C_instruction, L_instruction
+              A_instruction,
+              C_instruction,
+              L_instruction
             };
 
         private:
             std::ifstream* asmFile = nullptr;
             std::string* currentInstruction = nullptr;
             instruction currentInstructionType;
-            std::array<std::string, 2>* currentInstructionTokens;
             
         public:
             /**
@@ -37,36 +40,36 @@ namespace HackAssembler
             /**
              * @brief Advances the file reader to the next line if available.
              */
-            void advance();
+            void advance() noexcept(false);
 
             /**
              * @brief Indicates the type of the current instruction.
              * @return @param instruction 
              */
-            instruction* instructionType();
+            instruction instructionType() const;
 
             /**
              * @brief Current instruction value.
              * @return string of a label or a number. 
              */
-            std::string* symbol();
+            std::unique_ptr<std::string> symbol() const noexcept(false);
 
             /**
              * @brief Current instruction destination.
-             * @return Retuns the destination for the computation.
+             * @return Returns the destination for the computation.
              */
-            std::string* dest();
+            std::unique_ptr<std::string> dest() const noexcept(false);
 
             /**
              * @brief Current computation instruction.
              * @return the computation instructions.
              */
-            std::string* comp();
+            std::unique_ptr<std::string> comp() const noexcept(false);
 
             /**
              * @brief Current instruction jump value
              * @return String with the jump instruction
-             */
-            std::string* jump();
+             */;
+            std::unique_ptr<std::string> jump() const noexcept(false);
     };
 }

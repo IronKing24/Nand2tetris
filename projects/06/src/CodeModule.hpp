@@ -14,6 +14,7 @@ namespace HackAssembler
             std::unordered_map<std::string, std::string>* jumpValue;
 
         public:
+           CodeModule();
            std::unique_ptr<std::string> dest(std::string* label);
            std::unique_ptr<std::string> comp(std::string* label);
            std::unique_ptr<std::string> jmp(std::string *label);
