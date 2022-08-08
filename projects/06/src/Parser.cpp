@@ -30,7 +30,8 @@ namespace HackAssembler
             {
                 std::_String_iterator<std::_String_val<std::_Simple_types<char>>> textStart = 
                     std::find_if(currentInstruction->begin(), currentInstruction->end(),[](char c) 
-                    { return !bool(std::isspace(c));
+                    { 
+                        return !bool(std::isspace(c));
                     });
                 currentInstruction->erase(currentInstruction->begin(), textStart);
             }
@@ -61,89 +62,96 @@ namespace HackAssembler
                 break;
             }
         }
-
-        //set type
-        if(currentInstruction->at(0) == '@')
-        {
-            if (bool(std::isdigit(currentInstruction->at(1))))
-            {
-                currentInstructionType = Parser::A_instruction;
-            }
-            else
-            {
-                currentInstructionType = Parser::L_instruction;
-            }
-        }
-        else
-        {
-            if (currentInstruction->find('=') != std::string::npos ||
-                currentInstruction->find(';') != std::string::npos)
-            {
-                currentInstructionType = Parser::C_instruction;
-            }
-            else
-            {
-                throw std::runtime_error(std::format("the instruction type of \"{}\" was not recognized.", currentInstruction));
-            }
-            
-        }
     }
 
     Parser::instruction Parser::instructionType() const
     {
-        return currentInstructionType;
+        if (currentInstruction->at(0) == '@')
+        {
+            return Parser::A_instruction;
+        }
+        else if (currentInstruction->at(0) == '(' && currentInstruction->at(currentInstruction->length() - 1) == ')')
+        {
+            return Parser::L_instruction;
+        }
+        else if (currentInstruction->find('=') != std::string::npos ||
+                 currentInstruction->find(';') != std::string::npos)
+        {
+            return Parser::C_instruction;
+        }
+        else
+        {
+            throw std::runtime_error(
+                std::format("the instruction type of \"{}\" was not recognized.", currentInstruction));
+        }
     }
     
     std::unique_ptr<std::string> Parser::symbol() const noexcept(false)
     {
-        if (currentInstructionType == Parser::A_instruction || currentInstructionType == Parser::L_instruction)
+        if (currentInstruction->at(0) == '@')
         {
-            throw std::runtime_error(
-                std::format("the instruction type of \"{}\" doesn't have symbols.", currentInstruction));
+            return std::make_unique<std::string>(
+                currentInstruction->substr(std::size_t(1), currentInstruction->length()));
+        }
+        else if (currentInstruction->at(0) == '(' && currentInstruction->at(currentInstruction->length() - 1) == ')')
+        {
+            return std::make_unique<std::string>(
+                currentInstruction->substr(std::size_t(1), currentInstruction->length() - 2));
         }
         else
         {
-            return std::make_unique<std::string>(
-                currentInstruction->substr(std::size_t(1), std::size_t(currentInstruction->length() - 1)));
+            throw std::runtime_error(
+                std::format("the instruction type of \"{}\" doesn't have symbols.", currentInstruction));
         }
     }
     
     std::unique_ptr<std::string> Parser::dest() const noexcept(false)
     {
-        if (Parser::currentInstructionType != Parser::C_instruction)
+        std::size_t pos = currentInstruction->find('=');
+        if (pos == std::string::npos)
         {    
             throw std::runtime_error(
                 std::format("the instruction type of \"{}\" doesn't have a destination.", currentInstruction));
         } 
         else
         {
-
+            return std::make_unique<std::string>(currentInstruction->substr(std::size_t(0), pos - 1));
         }
     }
 
     std::unique_ptr<std::string> Parser::comp() const noexcept(false)
     {
-        if (Parser::currentInstructionType != Parser::C_instruction)
+        if (currentInstruction->find('=') != std::string::npos && currentInstruction->find('=') != std::string::npos)
         {
             throw std::runtime_error(
-                std::format("the instruction type of \"{}\" doesn't have a computation.", currentInstruction));
+                std::format("the instruction type of \"{}\" is invalid computation.", currentInstruction));
         }
-        else
+
+        std::size_t pos;
+        pos = currentInstruction->find('=');
+        if(pos != std::string::npos)
         {
-            
+            return std::make_unique<std::string>(currentInstruction->substr(pos + 1));
+        }
+
+        pos = currentInstruction->find(';');
+        if (pos != std::string::npos)
+        {
+            return std::make_unique<std::string>(currentInstruction->substr(0, pos - 1));
         }
     }
     
     std::unique_ptr<std::string> Parser::jump() const noexcept(false)
     {
-        if (Parser::currentInstructionType == Parser::C_instruction)
+        std::size_t pos = currentInstruction->find(';'); 
+        if (pos == std::string::npos)
         {
             throw std::runtime_error(
                 std::format("the instruction type of \"{}\" doesn't have a jump instruction.", currentInstruction));
         }
         else
         {
-            
+            return std::make_unique<std::string>(currentInstruction->substr(pos + 1));
         }
     }
 }

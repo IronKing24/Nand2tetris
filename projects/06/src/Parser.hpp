@@ -14,17 +14,18 @@ namespace HackAssembler
              * @brief Types of possible instructions((A) Address or value, (C) Computation, (L) Label)
              * undefined is created to as clear-out value
              */
-            enum instruction: char
-            {
+          enum instruction : char
+          {
+              Undefined,
               A_instruction,
               C_instruction,
               L_instruction
-            };
+          };
 
         private:
             std::ifstream* asmFile = nullptr;
             std::string* currentInstruction = nullptr;
-            instruction currentInstructionType;
+            instruction currentInstructionType = Undefined;
             
         public:
             /**

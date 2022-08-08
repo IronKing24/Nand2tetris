@@ -6,10 +6,9 @@ add_executable (HackAssembler "HackAssembler.cpp" "HackAssembler.hpp" "CodeModul
 
 #set compiler warnings
 if(MSVC)
-    add_compile_options(/permissive /W4 /w14640 /analyze)
+    add_compile_options(/permissive /analyze /std:c++20 /W4 /w14640 )
 else()
     add_compile_options(-Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic)
 endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
-#set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
