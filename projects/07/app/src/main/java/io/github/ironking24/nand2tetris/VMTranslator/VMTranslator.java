@@ -9,6 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 public class VMTranslator 
 {
@@ -24,7 +26,7 @@ public class VMTranslator
                 System.out.print("Nand2Tetris' Virtual machine translator\n"+
                 "\n"+
                 "Author: IronKing24\n"+
-                "Version: 1.0.0\n"+
+                "Version: 0.5.0\n"+
                 "\n"+
                 "insert Nand2Tetris .vm file path as an argument to get Nand2Tetris .asm file.");
                 System.exit(0);
@@ -40,7 +42,7 @@ public class VMTranslator
                     System.err.println("Insufficient read privileges.");
                     System.exit(-1);
                 }
-                
+
                 if(Files.isRegularFile(vmPath)){
                     if(!args[0].endsWith(".vm")){
                         System.err.println("File is not a valid Nand2Tetris .vm file.");
@@ -51,15 +53,15 @@ public class VMTranslator
                     }
                 else if(Files.isDirectory(vmPath)){
                 //collect all the .vm files in the directory.
-                    if(vmPath.toFile().list().length== 0){
+                    if(Objects.requireNonNull(vmPath.toFile().list()).length== 0){
                         System.err.println("The directory does not any Nand2Tetris .vm files.");
                         System.exit(-1);
                     }
-                    try{
-                        for(Path path : Files.list(vmPath).toList()) {
+                    try(Stream<Path> stream = Files.list(vmPath)){
+                        for(Path path : stream.toArray(Path []::new)) {
                             if(path.toString().endsWith(".vm")){
                                 if(!Files.isReadable(path)){
-                                    System.err.println(String.format("Access to a file %d in directory is restricted.", path.getFileName()));
+                                    System.err.printf("Access to a file %s in directory is restricted.%n", path.getFileName());
                                     System.exit(-1);
                                 }
                                 vmPaths.add(path);
@@ -70,14 +72,14 @@ public class VMTranslator
                         System.err.println("Error listing .vm files in the directory.");
                         System.err.println(e.getMessage());
                         System.exit(-1);
-                    }      
+                    }
                 //.asm path computation.
                     asmFile = Paths.get(vmPath.toString(), vmPath.getFileName().toString()+".asm");
                     try{
                         Files.deleteIfExists(asmFile);
                         Files.createFile(asmFile);
                     }
-                    catch(IOException e){
+                    catch(Exception e){
                         System.err.println("Error creating a new .asm file.");
                         System.err.println(e.getMessage());
                         System.exit(-1);
@@ -93,43 +95,25 @@ public class VMTranslator
         //translation starts
         try(CodeWriter writer = new CodeWriter(new BufferedWriter(new FileWriter(asmFile.toFile())))){
             for (Path file : vmPaths) {
-                try ( //initialize file specific modules.
-                        BufferedReader reader = new BufferedReader(new FileReader(file.toFile()))) {
-                    Parser parser = new Parser(reader);
-                    writer.setFileName(file.getFileName().toString().replace(".vm", ""));
-                    while(parser.hasMoreLines()){
-                        parser.advance();
-                        writer.xxx("//"+parser.currentCommand+"\n");
-                        switch(parser.commandType()){
-                            case C_ARITHMETIC:
-                                writer.writeArithmetic(parser.arg1());
-                                break;
-                            case C_PUSH: case C_POP:
-                                writer.writePushPop(parser.commandType(), parser.arg1(), parser.arg2());
-                                break;
-                            case C_FUNCTION:
-                                writer.WriteFunction(parser.arg1(), parser.arg2());
-                                break;
-                            case C_CALL:
-                                writer.WriteCall(parser.arg1(), parser.arg2());
-                                break;
-                            case C_RETURN:
-                                writer.WriteReturn();
-                                break;
-                            case C_LABEL:
-                                writer.WriteLabel(parser.arg1());
-                                break;
-                            case C_GOTO:
-                                writer.WriteGoto(parser.arg1());
-                                break;
-                            case C_IF:
-                                writer.WriteIf(parser.arg1());
-                                break;
-                            default:
-                                throw new Exception(String.format("Command %s was not recognized.", parser.commandType().name()));
-                        }
+                //initialize file specific modules.
+                BufferedReader reader = new BufferedReader(new FileReader(file.toFile()));
+                Parser parser = new Parser(reader);
+                writer.setFileName(file.getFileName().toString().replace(".vm", ""));
+                while(parser.hasMoreLines()){
+                    parser.advance();
+                    writer.comment(parser.currentCommand);
+                    switch(parser.commandType()){
+                        case C_ARITHMETIC:
+                            writer.writeArithmetic(parser.arg1());
+                            break;
+                        case C_PUSH: case C_POP:
+                            writer.writePushPop(parser.commandType(), parser.arg1(), parser.arg2());
+                            break;
+                        default:
+                            throw new Exception(String.format("Command %s was not recognized.", parser.commandType().name()));
                     }
                 }
+                reader.close();
             }
         }
         catch(Exception e){

@@ -15,11 +15,11 @@ import io.github.ironking24.nand2tetris.VMTranslator.Parser.commandTypes;
 */
 public class CodeWriter implements Closeable{
 
-    private BufferedWriter writer;
+    private final BufferedWriter writer;
     private String currentFileName, currentFunctionName;
-    private ArrayList<String> statics = new ArrayList<String>();
-    private HashMap<String, String> symbolTable = new HashMap<String, String>(9);
-    private HashMap<String, Integer> runningNumbersTable = new HashMap<String, Integer>(2);
+    private final ArrayList<String> statics = new ArrayList<>();
+    private final HashMap<String, String> symbolTable = new HashMap<>(9);
+    private final HashMap<String, Integer> runningNumbersTable = new HashMap<>(2);
 
     void xxx(String A) throws IOException{
         writer.write(A);
@@ -27,7 +27,7 @@ public class CodeWriter implements Closeable{
 
     CodeWriter(BufferedWriter output) throws IOException{
         this.writer = output;
-        this.currentFileName = this.currentFunctionName = new String();
+        this.currentFileName = this.currentFunctionName = "";
         
         //initialize vm to asm translation
         symbolTable.put("add","+");
@@ -58,12 +58,13 @@ public class CodeWriter implements Closeable{
      * sets the file name of the current file being translated.
     */
     public void setFileName(String name){
+
         currentFileName = name;
     }
     
     /**
      * writes the operation execution on the stack in hack's assembly.
-     * @throws Exception
+     * @throws IllegalArgumentException if the @param command is not recognized.
     */
     public void writeArithmetic(String command) throws Exception{
         switch(command){
@@ -105,123 +106,163 @@ public class CodeWriter implements Closeable{
                 checkName, symbolTable.get(command), checkName));
                 break;
             default:
-                throw new Exception(String.format("Unknown arithmetic command %s.", command));
+                throw new IllegalArgumentException(String.format("Unknown arithmetic command %s.", command));
         }
     }
 
     /**
      * writes the push/pop execution on the stack in hack's assembly.
-     * @throws LimitExceededException
-     * @throws Exception
+     * writes the push/pop execution on the stack in hack's assembly.
+     * @throws IllegalArgumentException is thrown when the @param command operation, @param segment or the static is unrecognized.
+     * @throws IOException is thrown when I/O error occurs.
+     * @throws LimitExceededException is thrown when there is no more room for new statics
+     * @throws IndexOutOfBoundsException is thrown when the @param index is exceeds the segment limits
     */
     public void writePushPop(Parser.commandTypes command, String segment, int index) throws IllegalArgumentException, IOException, LimitExceededException{
-        //validation check.
-        if(index < 0){
-            throw new IllegalArgumentException(String.format("Index can't be a negative value: %s",index));
-        }
-
         switch(command){
             case C_PUSH:
                 switch(segment){
+
                     case "constant":
                         if(index < 0 || index > 32767){
                             throw new IndexOutOfBoundsException(String.format("Illegal constant value: %s", index));
                         }
                         writer.write(String.format(
-                            "@%d\n"+
-                            "D=A\n", 
-                            index));
+                        "@%d\n"+
+                        "D=A\n",
+                        index));
                         break;
+                    //local, argument, this, that share the same structure.
                     case "local": case "argument": case "this": case "that":
-                        writer.write(String.format(
-                            "@%s\n", 
-                            symbolTable.get(segment)));
-                        if (index < 0 && index > 32767){
+                        if (index < 0 || index > 32767){
                             throw new IndexOutOfBoundsException(String.format("Illegal segment(%s) index is out of bounds: %s", segment, index));
                         }
-                        else if(index > 0){
+
+                        writer.write(String.format("@%s\n", symbolTable.get(segment)));
+                        //index optimization.
+                        if(index > 0){
                             writer.write(String.format(
-                                "D=M\n"+    
-                                "@%d\n"+
-                                "A=D+A\n", 
-                                index));
-                            }
+                            "D=M\n"+
+                            "@%d\n"+
+                            "A=D+A\n",
+                             index));
+                        }
                         else{
                             writer.write("A=M\n");
                         }
                         writer.write("D=M\n");
                         break;
-                    case "pointer": case "temp": case "static": 
-                        if((segment.equals("pointer") && !(index >= 0 && index < 2)) || (segment.equals("temp") && !(index >= 0 && index <= 7))){
-                            throw new IndexOutOfBoundsException(String.format("Illegal push segment(%s) index is out of bounds: %s", segment, index));
+
+                    case "pointer":
+                        if(!(index >= 0 && index < 2))
+                        {
+                            throw new IndexOutOfBoundsException(String.format("Illegal push to the pointer segment, the index is out of bounds: %d", index));
                         }
-                        if(segment.equals("static") && !statics.contains(String.format("%s.%d", currentFileName, index))){
+                        writer.write(String.format(
+                        "@R%d\n"+
+                        "D=M\n",
+                        index + 3));
+                        break;
+                    case "temp":
+                        if(!(index >= 0 && index <= 7))
+                        {
+                            throw new IndexOutOfBoundsException(String.format("Illegal push to the temp segment, index is out of bounds: %d", index));
+                        }
+                        writer.write(String.format(
+                        "@R%d\n"+
+                        "D=M\n",
+                        index + 5));
+                        break;
+                    case "static":
+                        if(!statics.contains(String.format("%s.%d", currentFileName, index)))
+                        {
                             throw new IllegalArgumentException(String.format("the static address for the push operation (%s.%d) does not exist.", currentFileName, index));
                         }
                         writer.write(String.format(
-                            "@%s\n"+
-                            "D=M\n", 
-                            segment.equals("static")? String.format("%s.%d", currentFileName, index): 
-                                (segment.equals("pointer") ? String.format("R%d", index + 3): 
-                                    String.format("R%d", index + 5))));
+                        "@%s.%d\n"+
+                         "D=M\n"
+                        , currentFileName, index));
                         break;
                     default:
                         throw new IllegalArgumentException(String.format("Illegal push segment: %s", segment));
                 }
                 writer.write(
-                    "@SP\n"+
-                    "A=M\n"+
-                    "M=D\n"+
-                    "@SP\n"+
-                    "M=M+1\n");
+                 "@SP\n"+
+                 "A=M\n"+
+                 "M=D\n"+
+                 "@SP\n"+
+                 "M=M+1\n");
                 break;
+
             case C_POP:
                 switch(segment){
-                    case "local": case "argument": case "this": case "that":       
-                        writer.write(String.format(
-                            "@%s\n"+
-                            "D=M\n",
-                            symbolTable.get(segment)));
-                        if(index < 0 && index > 32767){
+                    case "local": case "argument": case "this": case "that":
+                        if(index < 0 || index > 32767){
                             throw new IndexOutOfBoundsException(String.format("Illegal segment(%s) index is out of bounds: %s", segment, index));
                         }
-                        else if(index > 0){
+                        writer.write(String.format(
+                        "@%s\n"+
+                        "D=M\n",
+                        symbolTable.get(segment)));
+                        if(index > 0){
                             writer.write(String.format(
-                                "@%d\n"+
-                                "D=D+A\n", 
-                                index));
+                            "@%d\n"+
+                            "D=D+A\n",
+                            index));
                         }
                         writer.write(
-                            "@R13\n"+
-                            "M=D\n"+
-                            "@SP\n"+
-                            "AM=M-1\n"+
-                            "D=M\n"+
-                            "@R13\n"+
-                            "A=M\n"+
-                            "M=D\n");
+                        "@R13\n"+
+                        "M=D\n"+
+                        "@SP\n"+
+                        "AM=M-1\n"+
+                        "D=M\n"+
+                        "@R13\n"+
+                        "A=M\n"+
+                        "M=D\n");
                         break;
-                    case "pointer": case"temp": case "static":
-                    if((segment.equals("pointer") && !(index >= 0 && index < 2)) || (segment.equals("temp") && !(index >= 0 && index <= 7))){
-                        throw new IndexOutOfBoundsException(String.format("Illegal push segment(%s) index is out of bounds: %s", segment, index));
-                    }
-                    if(segment.equals("static") && !statics.contains(String.format("%s.%d", currentFileName, index))){
-                        if(statics.size()+1 > 240){
-                            throw new LimitExceededException("The max number of statics has been exceeded.");
+                    case "pointer":
+                        if(index < 0 || index > 2)
+                        {
+                            throw new IndexOutOfBoundsException(String.format("Illegal push to the pointer segment, index is out of bounds: %s", index));
                         }
-                        statics.add(String.format(
-                            "%s.%d", 
-                            currentFileName, index));
-                    }
                         writer.write(String.format(
-                            "@SP\n"+
-                            "AM=M-1\n"+
-                            "D=M\n"+
-                            "@%s\n"+
-                            "M=D\n", 
-                            segment.equals("static")? String.format("%s.%d", currentFileName, index): 
-                                (segment.equals("pointer") ? String.format("R%d", index + 3): 
-                                    String.format("R%d", index + 5))));
+                        "@SP\n"+
+                        "AM=M-1\n"+
+                        "D=M\n"+
+                        "@R%d\n"+
+                        "M=D\n",
+                        index + 3));
+                        break;
+                    case"temp":
+                        if(index < 0 || index > 7)
+                        {
+                            throw new IndexOutOfBoundsException(String.format("Illegal push to the temp segment, index is out of bounds: %s", index));
+                        }
+                        writer.write(String.format(
+                        "@SP\n"+
+                        "AM=M-1\n"+
+                        "D=M\n"+
+                        "@R%d\n"+
+                        "M=D\n",
+                        index + 5));
+                        break;
+                    case "static":
+                        if(!statics.contains(String.format("%s.%d", currentFileName, index)))
+                        {
+                            if(statics.size()+1 > 240){
+                                throw new LimitExceededException("The max number of statics has been exceeded.");
+                            }
+                            statics.add(String.format(
+                            "%s.%d",
+                            currentFileName, index));
+                        }
+                        writer.write(String.format(
+                        "@SP\n"+
+                        "AM=M-1\n"+
+                        "D=M\n"+
+                        "@%s.%d\n"+
+                        "M=D\n",
+                        currentFileName, index));
                         break;
                     default:
                         throw new IllegalArgumentException(String.format("Illegal pop segment: %s", segment));
@@ -234,6 +275,8 @@ public class CodeWriter implements Closeable{
 
     /**
      * writes a label assembly.
+     * @param  label is whet label name
+     * @throws IOException if there is an I/O error.
     */
     public void WriteLabel(String label) throws IOException{
         writer.write(String.format(
@@ -243,6 +286,8 @@ public class CodeWriter implements Closeable{
 
     /**
      * Writes a goto assembly.
+     * @param  label is target of the jump
+     * @throws IOException if there is an I/O error.
     */
     public void WriteGoto(String label) throws IOException{
         writer.write(String.format(
@@ -253,17 +298,17 @@ public class CodeWriter implements Closeable{
 
     /**
      * Writes a goto assembly.
+     * @param  label is teh jump target if the stack top is true
+     * @throws IOException if there is an I/O error.
     */
     public void WriteIf(String label) throws IOException{
         writer.write(String.format(
         "@SP\n"+
         "AM=M-1\n"+
         "D=M\n"+
-        "@%s\n"+
-        "D;JNE\n", 
-        String.format(
-            "%s$%s", 
-            currentFunctionName, label)));
+        "@%s$%s\n"+
+        "D;JNE\n",
+         currentFunctionName, label));
     }
     
     /**
@@ -282,7 +327,9 @@ public class CodeWriter implements Closeable{
 
     /**
      * Writes a function call assembly.
-     * @throws IOException
+     * @param  functionName is the function .
+     * @param  nArgs is the number of argument that it has.
+     * @throws IOException if there is an I/O error.
     */
     public void WriteCall(String functionName, int nArgs) throws IOException{
         String returnAddress = String.format("%s$ret.%d", functionName, nextRunningNumber(String.format("%s$ret", functionName)));
@@ -298,14 +345,14 @@ public class CodeWriter implements Closeable{
             returnAddress));
             for (int i = 1; i < 5; i++) {
                 writer.write(String.format(
-                    "@%s\n"+
-                    "D=M\n"+
-                    "@SP\n"+
-                    "A=M\n"+
-                    "M=D\n"+
-                    "@SP\n"+
-                    "M=M+1\n", 
-                    "R"+i));
+                "@%s\n"+
+                "D=M\n"+
+                "@SP\n"+
+                "A=M\n"+
+                "M=D\n"+
+                "@SP\n"+
+                "M=M+1\n",
+                "R"+i));
             }
             writer.write(String.format(
             //lcl = sp
@@ -317,21 +364,19 @@ public class CodeWriter implements Closeable{
             "@%d\n"+
             "D=D-A\n"+
             "@ARG\n"+
-            "M=D\n", 
-            nArgs+5));
-        writer.write(String.format(
+            "M=D\n"+
             "@%s\n"+
             "0;JMP\n"+
             "(%s)\n",
-            functionName, returnAddress));
+            nArgs+5, functionName, returnAddress));
     }
 
     /**
      * Writes a return assembly.
-     * @throws IllegalArgumentException
-     * @throws LimitExceededException
+     * @throws LimitExceededException if the static segment if full.
+     * @throws IOException if there is an I/O error.
     */
-    public void WriteReturn() throws IOException, LimitExceededException, IllegalArgumentException{
+    public void WriteReturn() throws IOException, LimitExceededException {
         //set temp vars
         writer.write(
         //frame (R14) = LCL
@@ -355,12 +400,12 @@ public class CodeWriter implements Closeable{
         //Ri=*(frame-i)
         for (int i = 4; i > 0; i--) {
             writer.write(String.format(
-                "@R14\n"+
-                "AM=M-1\n"+
-                "D=M\n"+
-                "@%s\n"+
-                "M=D\n", 
-                "R"+i));
+            "@R14\n"+
+            "AM=M-1\n"+
+            "D=M\n"+
+            "@%s\n"+
+            "M=D\n",
+            "R"+i));
         }
         writer.write(
         //go to return address
@@ -371,9 +416,13 @@ public class CodeWriter implements Closeable{
 
     /**
      * Closes the BufferedWriter.
-     * @throws IOException
+     * @throws IOException if there is an I/O error.
     */
     public void close() throws IOException{
+        writer.write(
+        "(end)\n"+
+        "@end\n"+
+        "0;JMP\n");
         writer.flush();
         writer.close();
     }

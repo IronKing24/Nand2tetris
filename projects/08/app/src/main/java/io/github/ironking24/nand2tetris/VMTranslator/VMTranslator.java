@@ -9,11 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 public class VMTranslator 
 {
     private static Path asmFile;
-    private static ArrayList<Path> vmPaths = new ArrayList<Path>();
+    private static final ArrayList<Path> vmPaths = new ArrayList<>();
 
     public static void main(String[] args)
     {
@@ -51,15 +53,15 @@ public class VMTranslator
                     }
                 else if(Files.isDirectory(vmPath)){
                 //collect all the .vm files in the directory.
-                    if(vmPath.toFile().list().length== 0){
+                    if(Objects.requireNonNull(vmPath.toFile().list()).length== 0){
                         System.err.println("The directory does not any Nand2Tetris .vm files.");
                         System.exit(-1);
                     }
-                    try{
-                        for(Path path : Files.list(vmPath).toList()) {
+                    try(Stream<Path> stream = Files.list(vmPath)){
+                        for(Path path : stream.toArray(Path []::new)) {
                             if(path.toString().endsWith(".vm")){
                                 if(!Files.isReadable(path)){
-                                    System.err.println(String.format("Access to a file %d in directory is restricted.", path.getFileName()));
+                                    System.err.printf("Access to a file %s in directory is restricted.%n", path.getFileName());
                                     System.exit(-1);
                                 }
                                 vmPaths.add(path);
@@ -126,7 +128,7 @@ public class VMTranslator
                             writer.WriteIf(parser.arg1());
                             break;
                         default:
-                            throw new Exception(String.format("Command %d was not recognized.", parser.commandType().name()));
+                            throw new Exception(String.format("Command %s was not recognized.", parser.commandType().name()));
                     }
                 }
                 reader.close();

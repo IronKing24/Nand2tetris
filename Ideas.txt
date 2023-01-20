@@ -1,0 +1,6 @@
+use C++
+Yacc and Lex
+Preprocessor
+BNF
+LLVM
+Emulator

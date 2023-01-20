@@ -5,14 +5,14 @@ import java.io.IOException;
 
 public class Parser{
 
-    public enum commandTypes{C_ARITHMETIC, C_PUSH, C_POP, C_LABEL, C_GOTO, C_IF, C_FUNCTION, C_RETURN, C_CALL, Constant};
+    public enum commandTypes{C_ARITHMETIC, C_PUSH, C_POP, C_LABEL, C_GOTO, C_IF, C_FUNCTION, C_RETURN, C_CALL, Constant}
 
-    private BufferedReader reader = null;
+    private final BufferedReader reader;
     public String currentCommand = null;
     private commandTypes currentCommandType = null;
     private String [] tokens; 
     
-    Parser(BufferedReader input) throws IOException{
+    Parser(BufferedReader input) {
         this.reader = input;
     }
 
@@ -22,14 +22,10 @@ public class Parser{
      * @throws IOException if an IO error occurs during marking, reading, and resetting.
     */
     public boolean hasMoreLines() throws IOException{
-        reader.mark(5);
-        if(reader.read() != -1){
-            reader.reset();
-            return true;
-        }
-        else{
-            return false;
-        }
+        reader.mark(1);
+        boolean result = reader.read() == -1;
+        reader.reset();
+        return result;
     }
 
     /**
@@ -38,20 +34,20 @@ public class Parser{
      * @throws IllegalArgumentException IF the command type was not recognized.
     */
     public void advance() throws IOException, IllegalArgumentException{
-        String nextCommand = null;
+        String nextCommand;
 
         while(hasMoreLines()){
-            nextCommand = reader.readLine().strip();
+            nextCommand = reader.readLine().trim();
             //clean inline comments
             if(nextCommand.contains("//")){
                 if(nextCommand.startsWith("//")){
                     continue;
                 }
                 else{
-                    nextCommand = nextCommand.substring(0, nextCommand.indexOf("//")).strip();
+                    nextCommand = nextCommand.substring(0, nextCommand.indexOf("//")).trim();
                 }
             }
-            if(nextCommand.isBlank()){
+            if(nextCommand.equals("")){
                 continue;
             }
 
@@ -111,17 +107,18 @@ public class Parser{
      * @return Command name.
     */
     public String arg1(){
-        switch(currentCommandType){
-        case C_ARITHMETIC:
+        if (currentCommandType == commandTypes.C_ARITHMETIC) {
             return tokens[0];
-        default:   
+        }
+        else
+        {
             return tokens[1];
         }
     }
 
     /**
      * returns the first argument of the current command.
-     * @returns Command argument
+     * @return Command argument
     */
     public int arg2(){
         return Integer.parseInt(tokens[2]);

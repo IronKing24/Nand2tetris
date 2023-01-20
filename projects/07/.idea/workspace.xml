@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="62709d4b-7c7f-4013-9d93-29c8cf8d3c94" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../06/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../06/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../06/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../06/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../06/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../10/src/main/java/CompilationEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../10/src/main/java/JackAnalyzer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../10/src/main/java/JackTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../../LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/And/And.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/And/And.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/And/And.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/And/And.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/And/And.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/And/And.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/And16/And16.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/And16/And16.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/And16/And16.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/And16/And16.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/And16/And16.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/And16/And16.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux/DMux.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux/DMux.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux/DMux.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux/DMux.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux/DMux.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux/DMux.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux4Way/DMux4Way.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux4Way/DMux4Way.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux4Way/DMux4Way.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux4Way/DMux4Way.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux4Way/DMux4Way.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux4Way/DMux4Way.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux8Way/DMux8Way.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux8Way/DMux8Way.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux8Way/DMux8Way.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux8Way/DMux8Way.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/DMux8Way/DMux8Way.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/DMux8Way/DMux8Way.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux/Mux.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux/Mux.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux/Mux.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux/Mux.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux/Mux.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux/Mux.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux16/Mux16.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux16/Mux16.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux16/Mux16.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux16/Mux16.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux16/Mux16.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux16/Mux16.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux4Way16/Mux4Way16.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux4Way16/Mux4Way16.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux4Way16/Mux4Way16.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux4Way16/Mux4Way16.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux4Way16/Mux4Way16.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux4Way16/Mux4Way16.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux8Way16/Mux8Way16.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux8Way16/Mux8Way16.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux8Way16/Mux8Way16.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux8Way16/Mux8Way16.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Mux8Way16/Mux8Way16.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Mux8Way16/Mux8Way16.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Not/Not.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Not/Not.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Not/Not.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Not/Not.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Not/Not.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Not/Not.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Not16/Not16.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Not16/Not16.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Not16/Not16.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Not16/Not16.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Not16/Not16.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Not16/Not16.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or/Or.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or/Or.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or/Or.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or/Or.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or/Or.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or/Or.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or16/Or16.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or16/Or16.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or16/Or16.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or16/Or16.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or16/Or16.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or16/Or16.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or8Way/Or8Way.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or8Way/Or8Way.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or8Way/Or8Way.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or8Way/Or8Way.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Or8Way/Or8Way.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Or8Way/Or8Way.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Xor/Xor.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Xor/Xor.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Xor/Xor.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Xor/Xor.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/src/Xor/Xor.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../01/src/Xor/Xor.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01/test/test_01.py" beforeDir="false" afterPath="$PROJECT_DIR$/../01/test/test_01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/ALU/ALU-nostat.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/ALU/ALU-nostat.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/ALU/ALU-nostat.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/ALU/ALU-nostat.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/ALU/ALU.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/ALU/ALU.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/ALU/ALU.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/ALU/ALU.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/ALU/ALU.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/ALU/ALU.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/Add16/Add16.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/Add16/Add16.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/Add16/Add16.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/Add16/Add16.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/Add16/Add16.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/Add16/Add16.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/FullAdder/FullAdder.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/FullAdder/FullAdder.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/FullAdder/FullAdder.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/FullAdder/FullAdder.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/FullAdder/FullAdder.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/FullAdder/FullAdder.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/HalfAdder/HalfAdder.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/HalfAdder/HalfAdder.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/HalfAdder/HalfAdder.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/HalfAdder/HalfAdder.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/HalfAdder/HalfAdder.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/HalfAdder/HalfAdder.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/Inc16/Inc16.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/Inc16/Inc16.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/Inc16/Inc16.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/Inc16/Inc16.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/src/Inc16/Inc16.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../02/src/Inc16/Inc16.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../02/test/test_02.py" beforeDir="false" afterPath="$PROJECT_DIR$/../02/test/test_02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/Bit/Bit.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/Bit/Bit.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/Bit/Bit.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/Bit/Bit.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/Bit/Bit.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/Bit/Bit.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/PC/PC.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/PC/PC.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/PC/PC.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/PC/PC.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/PC/PC.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/PC/PC.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM16K/RAM16K.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM16K/RAM16K.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM16K/RAM16K.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM16K/RAM16K.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM16K/RAM16K.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM16K/RAM16K.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM4K/RAM4K.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM4K/RAM4K.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM4K/RAM4K.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM4K/RAM4K.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM4K/RAM4K.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM4K/RAM4K.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM512/RAM512.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM512/RAM512.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM512/RAM512.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM512/RAM512.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM512/RAM512.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM512/RAM512.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM64/RAM64.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM64/RAM64.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM64/RAM64.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM64/RAM64.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM64/RAM64.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM64/RAM64.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM8/RAM8.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM8/RAM8.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM8/RAM8.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM8/RAM8.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/RAM8/RAM8.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/RAM8/RAM8.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/Register/Register.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/Register/Register.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/Register/Register.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/Register/Register.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/src/Register/Register.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../03/src/Register/Register.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03/test/test_03.py" beforeDir="false" afterPath="$PROJECT_DIR$/../03/test/test_03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04/src/fill/Fill.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../04/src/fill/Fill.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04/src/fill/Fill.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../04/src/fill/Fill.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04/src/mult/Mult.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../04/src/mult/Mult.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04/src/mult/Mult.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../04/src/mult/Mult.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04/src/mult/mult.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../04/src/mult/mult.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04/test/test_04.py" beforeDir="false" afterPath="$PROJECT_DIR$/../04/test/test_04.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/Add.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/Add.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/CPU-external.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/CPU-external.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/CPU-external.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/CPU-external.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/CPU.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/CPU.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/CPU.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/CPU.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/CPU.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/CPU.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/Computer.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/Computer.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerAdd-external.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerAdd-external.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerAdd-external.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerAdd-external.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerAdd.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerAdd.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerAdd.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerAdd.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerMax-external.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerMax-external.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerMax-external.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerMax-external.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerMax.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerMax.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerMax.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerMax.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerRect-external.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerRect-external.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerRect-external.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerRect-external.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerRect.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerRect.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/ComputerRect.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/ComputerRect.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/Max.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/Max.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/Memory.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/Memory.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/Memory.hdl" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/Memory.hdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/Memory.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/Memory.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/src/Rect.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../05/src/Rect.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05/test/test_05.py" beforeDir="false" afterPath="$PROJECT_DIR$/../05/test/test_05.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/../06/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../06/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/.settings/org.eclipse.buildship.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/.settings/org.eclipse.buildship.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/Add compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/Add compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/Add.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/Add.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/MaxL compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/MaxL compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/MaxL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/MaxL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/PongL compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/PongL compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/PongL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/PongL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/RectL compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/RectL compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/RectL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test1/RectL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Max compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Max compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Max.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Max.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Pong compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Pong compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Pong.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Pong.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Rect compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Rect compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Rect.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Main/test2/Rect.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Parser/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/bin/test/Parser/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/Add compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/Add compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/Add.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/Add.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/MaxL compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/MaxL compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/MaxL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/MaxL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/PongL compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/PongL compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/PongL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/PongL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/RectL compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/RectL compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/RectL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test1/RectL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Max compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Max compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Max.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Max.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Pong compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Pong compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Pong.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Pong.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Rect compare.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Rect compare.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Rect.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Main/test2/Rect.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Parser/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/default/src/test/resources/Parser/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/add/Add.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/add/Add.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/add/AddTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/add/AddTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/max/Max.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/max/Max.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/max/MaxL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/max/MaxL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/max/MaxLTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/max/MaxLTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/max/MaxTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/max/MaxTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/pong/Pong.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/pong/Pong.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/pong/PongL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/pong/PongL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/pong/PongLTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/pong/PongLTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/pong/PongTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/pong/PongTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/rect/Rect.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/rect/Rect.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/rect/RectL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/rect/RectL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/rect/RectLTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/rect/RectLTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Main/rect/RectTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Main/rect/RectTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/bin/test/Parser/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/bin/test/Parser/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/main/java/io/github/ironking24/nand2tetris/HackAssembler/CodeModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/main/java/io/github/ironking24/nand2tetris/HackAssembler/CodeModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/main/java/io/github/ironking24/nand2tetris/HackAssembler/HackAssembler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/main/java/io/github/ironking24/nand2tetris/HackAssembler/HackAssembler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/main/java/io/github/ironking24/nand2tetris/HackAssembler/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/main/java/io/github/ironking24/nand2tetris/HackAssembler/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/main/java/io/github/ironking24/nand2tetris/HackAssembler/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/main/java/io/github/ironking24/nand2tetris/HackAssembler/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/java/io/github/ironking24/nand2tetris/HackAssembler/CodeModuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/java/io/github/ironking24/nand2tetris/HackAssembler/CodeModuleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/java/io/github/ironking24/nand2tetris/HackAssembler/HackAssemblerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/java/io/github/ironking24/nand2tetris/HackAssembler/HackAssemblerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/java/io/github/ironking24/nand2tetris/HackAssembler/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/java/io/github/ironking24/nand2tetris/HackAssembler/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/java/io/github/ironking24/nand2tetris/HackAssembler/SymbolTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/java/io/github/ironking24/nand2tetris/HackAssembler/SymbolTableTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/add/Add.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/add/Add.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/add/AddTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/add/AddTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/max/Max.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/max/Max.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/max/MaxL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/max/MaxL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/max/MaxLTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/max/MaxLTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/max/MaxTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/max/MaxTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/pong/Pong.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/pong/Pong.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/pong/PongL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/pong/PongL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/pong/PongLTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/pong/PongLTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/pong/PongTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/pong/PongTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/rect/Rect.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/rect/Rect.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/rect/RectL.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/rect/RectL.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/rect/RectLTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/rect/RectLTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Main/rect/RectTest.hack" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Main/rect/RectTest.hack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/app/src/test/resources/Parser/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../06/app/src/test/resources/Parser/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../06/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/CPU Emulator.dat" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/CPU Emulator.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/io/github/ironking24/nand2tetris/VMTranslator/CodeWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/io/github/ironking24/nand2tetris/VMTranslator/CodeWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/io/github/ironking24/nand2tetris/VMTranslator/Parser$commandTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/io/github/ironking24/nand2tetris/VMTranslator/Parser$commandTypes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/io/github/ironking24/nand2tetris/VMTranslator/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/io/github/ironking24/nand2tetris/VMTranslator/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/main/io/github/ironking24/nand2tetris/VMTranslator/VMTranslator.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/main/io/github/ironking24/nand2tetris/VMTranslator/VMTranslator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/StackArithmetic/StackTest/StackTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/StackArithmetic/StackTest/StackTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/01/StackArithmetic/StackTest/StackTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/FibonacciElement/FibonacciElement.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/FibonacciElement/FibonacciElement.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/FibonacciElement/Main.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/FibonacciElement/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/NestedCall/NestedCall.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/NestedCall/NestedCall.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/NestedCall/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/StaticsTest/Class1.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/StaticsTest/Class2.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/StaticsTest/StaticsTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/StaticsTest/StaticsTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/FunctionCalls/StaticsTest/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/ParserTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest$TestGroup01$MemoryAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest$TestGroup01$StackArithmetic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest$TestGroup01.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest$TestGroup02$FunctionCalls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest$TestGroup02$ProgramFlow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest$TestGroup02.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/test/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/nb-configuration.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/CodeWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/CodeWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/VMTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/VMTranslator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/BasicTest/BasicTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/BasicTest/BasicTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/BasicTest/BasicTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/PointerTest/PointerTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/PointerTest/PointerTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/PointerTest/PointerTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/StaticTest/StaticTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/StaticTest/StaticTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/MemoryAccess/StaticTest/StaticTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/StackArithmetic/SimpleAdd/SimpleAdd.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/StackArithmetic/SimpleAdd/SimpleAdd.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/StackArithmetic/SimpleAdd/SimpleAdd.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/StackArithmetic/StackTest/StackTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/StackArithmetic/StackTest/StackTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/01/StackArithmetic/StackTest/StackTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/FibonacciElement/FibonacciElement.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/FibonacciElement/FibonacciElement.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/FibonacciElement/FibonacciElement.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/FibonacciElement/Main.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/FibonacciElement/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/NestedCall/NestedCall.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/NestedCall/NestedCall.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/NestedCall/NestedCall.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/NestedCall/NestedCall.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/NestedCall/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/SimpleFunction/SimpleFunction.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/SimpleFunction/SimpleFunction.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/SimpleFunction/SimpleFunction.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/SimpleFunction/SimpleFunction.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/SimpleFunction/SimpleFunction.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/StaticsTest/Class1.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/StaticsTest/Class1.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/StaticsTest/Class2.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/StaticsTest/StaticsTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/StaticsTest/StaticsTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/StaticsTest/StaticsTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/StaticsTest/StaticsTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/FunctionCalls/StaticsTest/Sys.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/StaticsTest/Sys.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/ProgramFlow/BasicLoop/BasicLoop.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/ProgramFlow/BasicLoop/BasicLoop.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/ProgramFlow/BasicLoop/BasicLoop.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/ProgramFlow/BasicLoop/BasicLoop.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/ProgramFlow/BasicLoop/BasicLoop.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/ProgramFlow/FibonacciSeries/FibonacciSeries.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/ProgramFlow/FibonacciSeries/FibonacciSeries.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/ProgramFlow/FibonacciSeries/FibonacciSeries.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/ProgramFlow/FibonacciSeries/FibonacciSeries.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/resources/02/ProgramFlow/FibonacciSeries/FibonacciSeries.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/../08/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../08/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/CPU Emulator.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/BasicTest/BasicTest.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/PointerTest/PointerTest.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/MemoryAccess/StaticTest/StaticTest.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/SimpleAdd/SimpleAdd.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/StackTest/StackTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/StackTest/StackTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/StackTest/StackTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/StackTest/StackTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/StackTest/StackTest.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/01/StackArithmetic/StackTest/StackTest.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/FibonacciElement/FibonacciElement.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/FibonacciElement/FibonacciElement.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/FibonacciElement/FibonacciElement.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/FibonacciElement/FibonacciElement.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/FibonacciElement/Main.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/FibonacciElement/Main.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/FibonacciElement/Sys.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/FibonacciElement/Sys.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/NestedCall/NestedCall.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/NestedCall/NestedCall.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/NestedCall/NestedCall.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/NestedCall/NestedCall.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/NestedCall/Sys.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/NestedCall/Sys.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/SimpleFunction/SimpleFunction.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/Class1.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/Class1.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/Class2.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/Class2.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/StaticsTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/StaticsTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/StaticsTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/StaticsTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/Sys.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/FunctionCalls/StaticsTest/Sys.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/BasicLoop/BasicLoop.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/bin/test/02/ProgramFlow/FibonacciSeries/FibonacciSeries.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/CodeWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/CodeWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/VMTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/main/java/io/github/ironking24/nand2tetris/VMTranslator/VMTranslator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/java/io/github/ironking24/nand2tetris/VMTranslator/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/java/io/github/ironking24/nand2tetris/VMTranslator/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/java/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/java/io/github/ironking24/nand2tetris/VMTranslator/VMTranslatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/BasicTest/BasicTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/BasicTest/BasicTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/BasicTest/BasicTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/PointerTest/PointerTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/PointerTest/PointerTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/PointerTest/PointerTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/StaticTest/StaticTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/StaticTest/StaticTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/MemoryAccess/StaticTest/StaticTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/StackArithmetic/SimpleAdd/SimpleAdd.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/StackArithmetic/SimpleAdd/SimpleAdd.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/StackArithmetic/SimpleAdd/SimpleAdd.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/StackArithmetic/StackTest/StackTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/StackArithmetic/StackTest/StackTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/01/StackArithmetic/StackTest/StackTest.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/FibonacciElement/FibonacciElement.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/FibonacciElement/FibonacciElement.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/FibonacciElement/FibonacciElement.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/FibonacciElement/Main.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/FibonacciElement/Main.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/FibonacciElement/Sys.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/FibonacciElement/Sys.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/NestedCall/NestedCall.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/NestedCall/NestedCall.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/NestedCall/Sys.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/NestedCall/Sys.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/SimpleFunction/SimpleFunction.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/SimpleFunction/SimpleFunction.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/SimpleFunction/SimpleFunction.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/SimpleFunction/SimpleFunction.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/StaticsTest/Class1.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/StaticsTest/Class2.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/FunctionCalls/StaticsTest/Class2.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/StaticsTest/StaticsTest.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/StaticsTest/StaticsTest.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/FunctionCalls/StaticsTest/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/ProgramFlow/BasicLoop/BasicLoop.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/ProgramFlow/BasicLoop/BasicLoop.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/ProgramFlow/BasicLoop/BasicLoop.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/ProgramFlow/BasicLoop/BasicLoop.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/ProgramFlow/FibonacciSeries/FibonacciSeries.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/ProgramFlow/FibonacciSeries/FibonacciSeries.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/app/src/test/resources/02/ProgramFlow/FibonacciSeries/FibonacciSeries.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/app/src/test/resources/tests/ProgramFlow/FibonacciSeries/FibonacciSeries.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../08/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/Average/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/BitmapEditor/BitmapEditor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/BitmapEditor/BitmapEditor.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/Fraction/Fraction.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/Fraction/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/HelloWorld/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/Jack OS API.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/List/List.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/List/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/Square/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/Square/Square.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../09/Square/SquareGame.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ArrayTest/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ArrayTest/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ArrayTest/MainT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/MainT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/Square.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/Square.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/SquareGame.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/SquareGame.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/SquareGameT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/ExpressionLessSquare/SquareT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/MainT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/Square.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/Square.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/SquareGame.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/SquareGame.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/SquareGameT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../10/Square/SquareT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/ComplexArrays/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/ComplexArrays/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/ConvertToBin/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/ConvertToBin/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/Pong/Ball.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/Pong/Ball.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/Pong/Bat.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/Pong/Bat.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/Pong/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/Pong/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/Pong/PongGame.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/Pong/PongGame.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/Seven/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/Seven/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/Square/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/Square/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../11/Square/SquareGame.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../11/Square/SquareGame.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/Array.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/Array.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/ArrayTest/ArrayTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../12/ArrayTest/ArrayTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/ArrayTest/ArrayTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../12/ArrayTest/ArrayTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/ArrayTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/ArrayTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/Keyboard.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/Keyboard.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/KeyboardTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/KeyboardTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/Math.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/Math.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MathTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MathTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MathTest/MathTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MathTest/MathTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MathTest/MathTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MathTest/MathTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/Memory.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/Memory.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MemoryTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MemoryTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MemoryTest/MemoryDiag/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MemoryTest/MemoryDiag/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MemoryTest/MemoryDiag/MemoryDiag.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MemoryTest/MemoryDiag/MemoryDiag.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MemoryTest/MemoryDiag/MemoryDiag.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MemoryTest/MemoryDiag/MemoryDiag.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MemoryTest/MemoryDiag/README.html" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MemoryTest/MemoryDiag/README.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MemoryTest/MemoryTest.cmp" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MemoryTest/MemoryTest.cmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MemoryTest/MemoryTest.tst" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MemoryTest/MemoryTest.tst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/MemoryTest/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../12/MemoryTest/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/Output.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/Output.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/OutputTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/OutputTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/Screen.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/Screen.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/ScreenTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/ScreenTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/String.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/String.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/StringTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/StringTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/Sys.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/Sys.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../12/SysTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/../12/SysTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../13/Other Ideas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../13/Other Ideas.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2E4tFR1aswb4vQrVXwtT1zxQ1K0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CodeProjects/Assignments/Coursera/Build a Modern Computer from First Principles From Nand to Tetris/Nand2tetris/projects/08&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Gradle.MemoryAccess.staticTest">
+    <configuration name="MemoryAccess.basicTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;io.github.ironking24.nand2tetris.VMTranslator.VMTranslatorTest$MemoryAccess.basicTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MemoryAccess.pointerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;io.github.ironking24.nand2tetris.VMTranslator.VMTranslatorTest$MemoryAccess.pointerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MemoryAccess.staticTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;io.github.ironking24.nand2tetris.VMTranslator.VMTranslatorTest$MemoryAccess.staticTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="StackArithmetic.simpleAdd" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;io.github.ironking24.nand2tetris.VMTranslator.VMTranslatorTest$StackArithmetic.simpleAdd&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="StackArithmetic.stackTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;io.github.ironking24.nand2tetris.VMTranslator.VMTranslatorTest$StackArithmetic.stackTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.MemoryAccess.staticTest" />
+        <item itemvalue="Gradle.MemoryAccess.pointerTest" />
+        <item itemvalue="Gradle.MemoryAccess.basicTest" />
+        <item itemvalue="Gradle.StackArithmetic.stackTest" />
+        <item itemvalue="Gradle.StackArithmetic.simpleAdd" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62709d4b-7c7f-4013-9d93-29c8cf8d3c94" name="Changes" comment="" />
+      <created>1661866579879</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1661866579879</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
