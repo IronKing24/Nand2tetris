@@ -8,6 +8,8 @@ projects/*/build
 projects/*/.vs
 projects/*/.vscode
 projects/*/CMakePresets.json
+projects/*/out
+projects/*/__pycache__
 
 #ignore the tools they can be dowloaded at
 #URL:https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ
