@@ -1,0 +1,102 @@
+
+add	//comment
+
+//comment
+
+sub //comment
+
+//comment
+
+neg //comment
+
+//comment
+
+eq	//comment
+
+//comment
+
+gt	//comment
+
+//comment
+
+lt	//comment
+
+//comment
+
+and	//comment
+
+//comment
+
+or	//comment
+
+//comment
+
+not //comment
+
+//comment
+
+push arguments 1	//comment
+
+//comment
+
+push local 1		//comment
+
+//comment
+
+push static 1		//comment
+
+//comment
+
+push constant 1		//comment
+
+//comment
+
+push this 1			//comment
+
+//comment
+
+push that 1			//comment
+
+//comment
+
+push pointer 1		//comment
+
+//comment
+
+push temp 1			//comment
+
+//comment
+
+pop arguments 1		//comment
+
+//comment
+
+pop local 1			//comment
+
+//comment
+
+pop static 1		//comment
+
+//comment
+
+pop constant 1		//comment
+
+//comment
+
+pop this 1			//comment
+
+//comment
+
+pop that 1			//comment
+
+//comment
+
+pop pointer 1		//comment
+
+//comment
+
+pop temp 1			//comment
+
+//comment
+
+push tep 1 add

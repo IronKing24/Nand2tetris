@@ -1,27 +1,27 @@
 //comment
 //comment
-@Label
+@Label	//comment
 //comment
-@42069
+@42069	//comment
 //comment
-(label)
+(label)	//comment
 //comment
-dest=comp;jump
+dest=comp;jump	//comment
 //comment
-M=1;JMP
+M=1;JMP	//comment
 //comment
-adm=comp
+adm=comp	//comment
 //comment
-comp;jlt
+comp;jlt	//comment
 //comment
-adm=;jmp
+adm=;jmp	//comment
 //comment
-adm=comp;jmp
+adm=comp;jmp	//comment
 //comment
-comp
+comp	//comment
 //comment
-dest=
+dest=	//comment
 //comment
-;jmp
+;jmp	//comment
 //comment
 //comment

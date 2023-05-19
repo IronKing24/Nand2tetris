@@ -1,5 +1,3 @@
-cmake_minimum_required (VERSION 3.8)
-
 enable_testing()
 
 include(GoogleTest)
@@ -11,7 +9,7 @@ add_library(Parser STATIC ${HackAssembler_SOURCE_DIR}/src/Parser.cpp)
 target_link_libraries(ParserTest PRIVATE Parser gtest_main)
 gtest_add_tests(
 	TARGET ParserTest 
-	WORKING_DIRECTORY ${HackAssembler_SOURCE_DIR}/test/res/parser
+	WORKING_DIRECTORY "${HackAssembler_SOURCE_DIR}/test/res/parser"
 )
 
 #Symbol table test
@@ -33,14 +31,22 @@ find_package(Python)
 
 if(Python_Interpreter_FOUND)
 	file(WRITE 
-	${HackAssembler_SOURCE_DIR}/test/src/args.py
-	"exe=\"${CMAKE_BINARY_DIR}/src/${CMAKE_CONFIGURATION_TYPES}/HackAssembler${CMAKE_EXECUTABLE_SUFFIX}\""
-	)
-	add_test(
-		NAME "HackAssemblerTest.HackFiles"
-		COMMAND ${Python_EXECUTABLE} -m unittest -v test_HackAssembler.py 
-		WORKING_DIRECTORY ${HackAssembler_SOURCE_DIR}/test/res/HackAssembler/test/src
-	)
+	${HackAssembler_SOURCE_DIR}/test/src/conf.py
+"res=\"${CMAKE_SOURCE_DIR}/test/res/HackAssembler\"
+")
+
+	get_property(isMultiConfig GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+
+	if(${isMultiConfig})
+		file(APPEND 
+			${HackAssembler_SOURCE_DIR}/test/src/conf.py
+			"exe=\"${HackAssembler_BINARY_DIR}/src/${CMAKE_CONFIGURATION_TYPE}/${CMAKE_PROJECT_NAME}${CMAKE_EXECUTABLE_SUFFIX}\"")
+	else()
+		file(APPEND 
+			${HackAssembler_SOURCE_DIR}/test/src/conf.py
+			"exe=\"${HackAssembler_BINARY_DIR}/src/${CMAKE_PROJECT_NAME}${CMAKE_EXECUTABLE_SUFFIX}\"")
+	endif()
+
 else()
 	message("Python was not found, intigration test skipped.")
 endif()

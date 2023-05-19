@@ -1,59 +1,77 @@
 #pragma once
-#include <fstream>
-#include <string>
+#include <algorithm>
 #include <exception>
+#include <fstream>
 #include <stdexcept>
+#include <string>
 
-namespace HackAssembler 
+namespace HackAssembler
 {
-	class Parser
-	{
-	public:
-		enum class instructionTypes {A_INSTRUCTION, C_INSTRUCTION, L_INSTRUCTION};
+    class Parser
+    {
+    public:
+        enum class instructionTypes
+        {
+            A_INSTRUCTION,
+            C_INSTRUCTION,
+            L_INSTRUCTION
+        };
 
-		///<summary>Opens the input stream and gets ready to parse it.</summary>
-		///<param name='stream'> stream pointer to the input stream.</param>
-		Parser(std::ifstream* stream);
+        /**
+         * \brief Open the input stream and gets ready to parse it.
+         */
+        explicit Parser(std::ifstream* stream);
+        ~Parser();
 
-		///<summary>Are there more lines in the input?</summary>
-		///<returns>True if EOF is not encountered, False otherwise.</returns>
-		const bool hasMoreLines();
+        /**
+         * \brief Are there more lines in the input.
+         */
+        const bool hasMoreLines();
 
-		///<summary>
-		///<para>Reads the next instruction form the input, and makes it the current instruction.</para>
-		///<para>Skips over white space and comments, if necessary.</para>
-		///</summary>
-		///<remarks>This routine should be called only if HasMoreLines is true.</remarks>
-		const void advance();
+        /**
+         * \brief Reads the next instruction from the input and makes it the current input.
+         * \remark Skips over white space and comments if necessary.
+         * \warning This function should be called only if \c hasMoreLines is true.
+         * \note Initially there is no current instruction.
+         */
+        void advance();
 
-		///<summary>Returns the type of the current instruction.</summary>
-		///<returns>
-		///<para>A_INSTRUCTION For @xxx where xxx is either a decimal number of a symbol.</para>
-		///<para>C_INSTRUCTION For dest=comp;jump .</para>
-		///<para>L_INSTRUCTION for (xxx) where xxx is a symbol.</para>
-		///</returns>
-		const instructionTypes instructionType();
+        /**
+         * \brief Returns the type of the current instruction:
+         * \c A_INSTRUCTION for @xxx, where xxx is either a decimal number or a symbol.
+         * \c C_INSTRUCTION for dest=comp:jump.
+         * \c L_INSTRUCTION for (xxx), where xxx is a symbol.
+         */
+        const instructionTypes instructionType();
 
+        /**
+         * \brief If the current instruction is (xxx), return the symbol xxx, if the current instruction is @xxx return
+         * the decimal or symbol xxx.
+         * \warning Should only be called if \c instructionType is \c A_INSTRUCTION or
+         * \c L_INSTRUCTION .
+         */
+        const std::string symbol();
 
-		///<summary>If the current instruction is @xxx or (xxx).</summary>
-		///<returns>The symbol or decimal xxx</returns>
-		///<remarks>This routine should be called only if instructionType is A_INSTRUCTION or L_INSTRUCTION.</remarks>
-		const std::string symbol();
+        /**
+         * \brief Return the symbolic dest part of the current C-instruction
+         * \warning Should only be called if \c instructionType is \c C_INSTRUCTION .
+         */
+        const std::string dest();
 
-		///<summary>Returns the symbolic dest part of the current C-instruction.</summary>
-        ///<remarks>This routine should be called only if instructionType is C_INSTRUCTION.</remarks>
-		const std::string dest();
+        /**
+         * \brief Return the symbolic comp part of the current C-instruction
+         * \warning Should only be called if \c instructionType is \c C_INSTRUCTION .
+         */
+        const std::string comp();
 
-		///<summary>Returns the symbolic comp part of the current C-instruction.</summary>
-        ///<remarks>This routine should be called only if instructionType is C_INSTRUCTION.</remarks>
-		const std::string comp();
+        /**
+         * \brief Return the symbolic jump part of the current C-instruction
+         * \warning Should only be called if \c instructionType is \c C_INSTRUCTION .
+         */
+        const std::string jump();
 
-		///<summary>Returns the symbolic jump part of the current C-instruction.</summary>
-        ///<remarks>This routine should be called only if instructionType is A_INSTRUCTION or L_INSTRUCTION.</remarks>
-		const std::string jump();
-	
-	private:
-		std::ifstream* input;
-		std::string currentInstruction;
-	};
-}
+    private:
+        std::ifstream* input;
+        std::string current_instruction;
+    };
+} // namespace HackAssembler

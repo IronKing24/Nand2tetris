@@ -1,69 +1,78 @@
 #pragma once
 #include "Parser.h"
 
-namespace HackAssembler {
-    Parser::Parser(std::ifstream* stream)
+namespace HackAssembler
+{
+    Parser::Parser(std::ifstream* stream) : input(stream)
     {
-        Parser::input = stream;
+        if (!Parser::input->is_open() || !input->good())
+        {
+            throw std::runtime_error("Parser failed to file stream.");
+        }
     }
 
     const bool Parser::hasMoreLines()
     {
-        while (input->good()) {
+        while (*input)
+        {
             std::string token;
             std::streampos bookmark = input->tellg();
             std::getline(*input, token);
+
             if (input->eof())
             {
                 return false;
             }
 
-            //l-trim
-            if (!token.empty() && std::isspace(token.at(0))) 
-            {
-                token.erase(token.begin(), std::find_if(token.begin(), token.end(), 
-                    [](unsigned char ch) {return !std::isspace(ch);}));
-            }
-
-            if (token.empty() || token.find("//") == 0)
+            // skip empty
+            if (token.empty())
             {
                 continue;
             }
-            else 
+
+            // skip blank
+            std::size_t start_pos = token.find_first_not_of(' ');
+            if (start_pos == std::string::npos)
             {
-                input->seekg(bookmark);
-                return true;
+                continue;
             }
+
+            // skip comment
+            std::size_t comment_pos = token.find_first_of("//");
+            if (start_pos == comment_pos)
+            {
+                continue;
+            }
+
+            input->seekg(bookmark);
+            return true;
         }
+
         return false;
     }
 
-    const void Parser::advance()
+    void Parser::advance()
     {
         std::string token;
 
         std::getline(*input, token);
 
-        //clear trailing comments
-        std::size_t pos = token.find("//");
-        if (pos != std::string::npos) 
-        {
-            token = token.substr(0, pos);
-        }
+        // postion trailing comments for removal
+        std::size_t end_offset        = token.find_first_of("//");
+        std::string::iterator end_ite = (end_offset == std::string::npos) ? token.end() : token.begin() + end_offset;
 
-        //strip any white spaces
-        token.erase(std::remove_if(token.begin(), token.end(), std::isspace), token.end());
-
-        currentInstruction = token;
+        // strip any white spaces
+        token.erase(std::remove_if(token.begin(), end_ite, std::isspace), token.cend());
+        current_instruction = token;
     }
 
     const Parser::instructionTypes Parser::instructionType()
     {
-        if (currentInstruction.at(0) == '@')
+        if (current_instruction.front() == '@')
         {
             return HackAssembler::Parser::instructionTypes::A_INSTRUCTION;
         }
-        else if (currentInstruction.at(0) == '(' && currentInstruction.at(currentInstruction.length() - 1) == ')')
+        else if (current_instruction.front() == '(' && current_instruction.back() == ')')
         {
             return HackAssembler::Parser::instructionTypes::L_INSTRUCTION;
         }
@@ -77,73 +86,26 @@ namespace HackAssembler {
     {
         if (instructionType() == HackAssembler::Parser::instructionTypes::A_INSTRUCTION)
         {
-            return currentInstruction.substr(1);
+            return current_instruction.substr(1);
         }
         else if (instructionType() == HackAssembler::Parser::instructionTypes::L_INSTRUCTION)
         {
-            return currentInstruction.substr(1, currentInstruction.length() - 2);
+            return current_instruction.substr(1, current_instruction.length() - 2);
         }
-        else 
+        else
         {
-            throw std::runtime_error("The current instruction is not a lable or an address:\n" + currentInstruction);
+            throw std::runtime_error("The current instruction is not a lable or an address:\n" + current_instruction);
         }
     }
 
     const std::string Parser::dest()
     {
-        if (instructionType() != HackAssembler::Parser::instructionTypes::C_INSTRUCTION) 
-        {
-            throw std::runtime_error("The current instruction is computaion:\n" + currentInstruction);
-        }
-
-        std::size_t pos = currentInstruction.find('=');
-
-        if (pos == std::string::npos)
-        {
-            return "null";
-        }
-        else 
-        {
-            return currentInstruction.substr(0, pos);
-        }
-    }
-
-    const std::string Parser::comp()
-    {
         if (instructionType() != HackAssembler::Parser::instructionTypes::C_INSTRUCTION)
         {
-            throw std::runtime_error("The current instruction is computaion:\n" + currentInstruction);
+            throw std::runtime_error("The current instruction is computaion:\n" + current_instruction);
         }
 
-        std::size_t dpos = currentInstruction.find('=');
-        std::size_t jpos = currentInstruction.find(';');
-        
-        if (dpos != std::string::npos && jpos == std::string::npos)
-        {
-            return currentInstruction.substr(dpos + 1);
-        }
-        else if (dpos == std::string::npos && jpos != std::string::npos)
-        {
-            return currentInstruction.substr(0, jpos);
-        }
-        else if(dpos != std::string::npos && jpos != std::string::npos)
-        {
-            return currentInstruction.substr(dpos + 1, jpos - dpos - 1);
-        }
-        else 
-        {
-            return currentInstruction;
-        }
-    }
-
-    const std::string Parser::jump()
-    {
-        if (instructionType() != HackAssembler::Parser::instructionTypes::C_INSTRUCTION)
-        {
-            throw std::runtime_error("The current instruction is computaion:\n" + currentInstruction);
-        }
-
-        std::size_t pos = currentInstruction.find(';');
+        std::size_t pos = current_instruction.find('=');
 
         if (pos == std::string::npos)
         {
@@ -151,8 +113,63 @@ namespace HackAssembler {
         }
         else
         {
-            return currentInstruction.substr(pos + 1);
+            return current_instruction.substr(0, pos);
         }
     }
-}
 
+    const std::string Parser::comp()
+    {
+        if (instructionType() != HackAssembler::Parser::instructionTypes::C_INSTRUCTION)
+        {
+            throw std::runtime_error("The current instruction is computaion:\n" + current_instruction);
+        }
+
+        std::size_t dpos = current_instruction.find('=');
+        std::size_t jpos = current_instruction.find(';');
+
+        if (dpos != std::string::npos && jpos == std::string::npos)
+        {
+            return current_instruction.substr(dpos + 1);
+        }
+        else if (dpos == std::string::npos && jpos != std::string::npos)
+        {
+            return current_instruction.substr(0, jpos);
+        }
+        else if (dpos != std::string::npos && jpos != std::string::npos)
+        {
+            return current_instruction.substr(dpos + 1, jpos - dpos - 1);
+        }
+        else
+        {
+            return current_instruction;
+        }
+    }
+
+    const std::string Parser::jump()
+    {
+        if (instructionType() != HackAssembler::Parser::instructionTypes::C_INSTRUCTION)
+        {
+            throw std::runtime_error("The current instruction is computaion:\n" + current_instruction);
+        }
+
+        std::size_t pos = current_instruction.find(';');
+
+        if (pos == std::string::npos)
+        {
+            return "null";
+        }
+        else
+        {
+            return current_instruction.substr(pos + 1);
+        }
+    }
+
+    Parser::~Parser()
+    {
+        if (input->is_open())
+        {
+            input->close();
+        }
+    }
+
+} // namespace HackAssembler

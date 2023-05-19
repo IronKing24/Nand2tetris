@@ -1,6 +1,6 @@
-use C++
-Yacc and Lex
-Preprocessor
-BNF
-LLVM
-Emulator
+use Bison and Flex
+Jack BNF
+Jack LLVM front end
+Hack LLVM back end
+VM to Zilog 80
+Oberon-0 to VM

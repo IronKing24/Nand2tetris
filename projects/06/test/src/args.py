@@ -1,1 +1,0 @@
-exe="D:/CodeProjects/Assignments/Coursera/Build a Modern Computer from First Principles From Nand to Tetris/projects/06/out/build/MSVC_X64_Debug/src/Debug/HackAssembler.exe"

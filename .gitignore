@@ -5,13 +5,18 @@ projects/*/src/*.out
 projects/*/build
 
 #ignore vs conf
-projects/*/.vs
-projects/*/.vscode
-projects/*/CMakePresets.json
-projects/*/out
-projects/*/__pycache__
+projects/**/.vs
+projects/**/.vscode
+projects/**/out
+projects/**/build
+projects/**/install
+projects/**/include
+!projects/**/include/CMakeLists.txt
+projects/**s/__pycache__
+projects/**/test/src/args.py
+
 
 #ignore the tools they can be dowloaded at
 #URL:https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ
-tools/*
+tools/**
 

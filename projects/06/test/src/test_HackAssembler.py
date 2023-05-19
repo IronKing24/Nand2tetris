@@ -1,23 +1,30 @@
 import unittest
 from os import sep, remove
-from os.path import abspath, exists
-from subprocess import Popen
-from filecmp import cmp, clear_cache
-from difflib import unified_diff
-from args import exe
+from os.path import exists
+from subprocess import run
+from filecmp import cmp
+from conf import exe, res
 
 class HackAssemblerTest(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        global res
-        res = abspath("../res/HackAssembler")
-    def test_hack(self):
-        for name in ("Add", "Max", "MaxL", "RectL", "PongL", "Max", "Rect", "Pong"):
+    def test_without_symbols(self):
+        if not exists(exe):
+            self.fail("The HackAssembler executable was not built")
+        for name in ("Add", "MaxL", "RectL", "PongL"):
             with self.subTest(name = name):
-                process = Popen(F"{exe} \"{res}/{name}/{name}.asm\"".replace("/", sep))
-                process.wait()
-                exsit_code = process.returncode
-                self.assertEqual(exsit_code, 0)
-                self.assertTrue(cmp(F"{res}/{name}/{name}.hack", F"{res}/{name}/{name}Test.hack"))
-                if(exists(F"{res}/{name}/{name}.hack")):
-                    remove(F"{res}/{name}/{name}.hack")
+                process = run(F"{exe} \"{res}/without symbols/{name}/{name}.asm\"".replace("/", sep))
+                exit_code = process.returncode
+                self.assertEqual(exit_code, 0)
+                self.assertTrue(cmp(F"{res}/without symbols/{name}/{name}.hack", F"{res}/without symbols/{name}/{name}Test.hack"))
+                if exists(F"{res}/without symbols/{name}/{name}.hack"):
+                    remove(F"{res}/without symbols/{name}/{name}.hack")
+    def test_with_symbols(self):
+        if not exists(exe):
+            self.fail("The HackAssembler executable was not built")
+        for name in ("Max", "Rect", "Pong"):
+            with self.subTest(name = name):
+                process = run (F"{exe} \"{res}/with symbols/{name}/{name}.asm\"".replace("/", sep))
+                exit_code = process.returncode
+                self.assertEqual(exit_code, 0)
+                self.assertTrue(cmp(F"{res}/with symbols/{name}/{name}.hack", F"{res}/with symbols/{name}/{name}Test.hack"))
+                if exists(F"{res}/with symbols/{name}/{name}.hack"):
+                    remove(F"{res}/with symbols/{name}/{name}.hack")

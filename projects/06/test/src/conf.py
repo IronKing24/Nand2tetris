@@ -1,0 +1,2 @@
+res="D:/CodeProjects/Assignments/Coursera/Build a Modern Computer from First Principles From Nand to Tetris/projects/06/test/res/HackAssembler"
+exe="D:/CodeProjects/Assignments/Coursera/Build a Modern Computer from First Principles From Nand to Tetris/projects/06/out/build/x64-debug/src/Debug/HackAssembler.exe"

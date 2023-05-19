@@ -1,30 +1,35 @@
 #pragma once
+#include <stdexcept>
 #include <string>
 #include <unordered_map>
-#include <stdexcept>
 
 namespace HackAssembler
 {
-	class SymbolTable
-	{
-	public:
-		///<summary>Creates a new empty symbol table.</summary>
-		SymbolTable();
-		~SymbolTable();
-		
-		///<summary>Adds &lt;<paramref name="symbol"/>,<paramref name="address"/>&gt; to the table.</summary>
-		///<param name='symbol'>The symbol that was found.</param>
-		///<param name='address'>The line number/address of that symbol</param>
-        void addEntry(const std::string& symbol, const unsigned short int address) noexcept;
+    class SymbolTable
+    {
+    public:
+        /**
+         * \brief Creates a new empty symbol table.
+         */
+        explicit SymbolTable();
+        ~SymbolTable();
 
-		///<summary>Does the symbol table contain the given <paramref name="symbol"/>?</summary>
-		const bool contains(const std::string& symbol) noexcept;
+        /**
+         * \brief Adds < \c symbol , \c address > to the table.
+         */
+        void addEntry(const std::string& symbol, uint16_t address);
 
-		///<summary>Returns the address associated with the <paramref name="symbol"/>.</summary>
-		///<exception cref="std::out_of_rang">Thrown if the <paramref name="symbol"/> is not in the table.</exception>
-        const unsigned short int getAddress(const std::string& symbol);
+        /**
+         * \brief Does the symbol table contain the given \c symbol ?
+         */
+        const bool contains(const std::string& symbol) noexcept;
 
-	private:
-		std::unordered_map<std::string, const unsigned short int> symbolTable;
-	};
-}
+        /**
+         * \brief Returns the address associated with the \c symbol .
+         */
+        const uint16_t getAddress(const std::string& symbol);
+
+    private:
+        std::unordered_map<std::string, const uint16_t> symbol_table;
+    };
+} // namespace HackAssembler
