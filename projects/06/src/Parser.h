@@ -1,8 +1,6 @@
 #pragma once
-#include <algorithm>
-#include <exception>
+#include <cstdint>
 #include <fstream>
-#include <stdexcept>
 #include <string>
 
 namespace HackAssembler
@@ -10,7 +8,13 @@ namespace HackAssembler
     class Parser
     {
     public:
-        enum class instructionTypes
+        /**
+         * \brief Types of instructions:
+         * \c A_INSTRUCTION for @xxx, where xxx is either a decimal number or a symbol.
+         * \c C_INSTRUCTION for dest=comp:jump.
+         * \c L_INSTRUCTION for (xxx), where xxx is a symbol.
+         */
+        enum class instructionTypes : std::uint8_t
         {
             A_INSTRUCTION,
             C_INSTRUCTION,
@@ -37,10 +41,7 @@ namespace HackAssembler
         void advance();
 
         /**
-         * \brief Returns the type of the current instruction:
-         * \c A_INSTRUCTION for @xxx, where xxx is either a decimal number or a symbol.
-         * \c C_INSTRUCTION for dest=comp:jump.
-         * \c L_INSTRUCTION for (xxx), where xxx is a symbol.
+         * \brief Returns the type of the current instruction.
          */
         const instructionTypes instructionType();
 
@@ -69,6 +70,21 @@ namespace HackAssembler
          * \warning Should only be called if \c instructionType is \c C_INSTRUCTION .
          */
         const std::string jump();
+
+        template<typename T, typename P>
+        T remove_if(T beg, T end, P pred)
+        {
+            T dest = beg;
+            for (T itr = beg;itr != end; ++itr)
+            {
+                if (!pred(*itr))
+                {
+                    *(dest++) = *itr;
+                }
+            }
+            return dest;
+        }
+
 
     private:
         std::ifstream* input;

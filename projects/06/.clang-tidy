@@ -4,5 +4,12 @@ Checks: >
   performance-*,
   portability-*,
   clang-analyzer-*
-WarningsAsErrors: true
+WarningsAsErrors: 'true'
 HeaderFilterRegex: '^(include)'
+AnalyzeTemporaryDtors: false
+InheritParentConfig: false
+SystemHeaders: false
+UseColor: true
+FormatStyle: none
+ExtraArgsBefore: false
+ExtraArgs: false

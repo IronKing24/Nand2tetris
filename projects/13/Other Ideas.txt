@@ -1,4 +1,11 @@
-1- LLVM backend and frontend
-2- Hack emulatorTools gui in Js (React Native, Angular)
-3- Rewrite the tools in Jack itself (if powerful enough)
-4- Write Jack interpreter (or JIT, for hack and x86)
+rebuild the chips in VHDL with logism circutes, diagrams, and tests
+Jack LLVM front end
+Hack LLVM back end
+Write Jack interpreter (or JIT, for hack and x86)
+use Bison and Flex
+Jack BNF
+VM to Zilog 80
+Oberon-0 to VM
+Lox langauge to VM
+rework the test suite to VM
+reimpelement the VM with bytecodes -> make the assmbler read bytecodesa and genrate to bytes

@@ -1,4 +1,3 @@
-#pragma once
 #include "Parser.h"
 
 namespace HackAssembler
@@ -62,7 +61,15 @@ namespace HackAssembler
         std::string::iterator end_ite = (end_offset == std::string::npos) ? token.end() : token.begin() + end_offset;
 
         // strip any white spaces
-        token.erase(std::remove_if(token.begin(), end_ite, std::isspace), token.cend());
+        std::string::iterator dest = token.begin();
+        for (std::string::iterator itr = token.begin();itr != end_ite; ++itr) 
+        {
+            if (std::isspace(*itr) == 0) 
+            {
+                *(dest++) = *itr;
+            }
+        }
+        token.erase(dest, token.cend());
         current_instruction = token;
     }
 
@@ -164,6 +171,7 @@ namespace HackAssembler
         }
     }
 
+   
     Parser::~Parser()
     {
         if (input->is_open())

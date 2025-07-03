@@ -1,6 +1,6 @@
-#pragma once
+#include "../../src/CodeModule.cpp"
 #include "gtest/gtest.h"
-#include "..\..\src\CodeModule.h"
+
 
 TEST(CodeModuleTest, DestinationTest)
 {

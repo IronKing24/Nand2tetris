@@ -1,12 +1,11 @@
-#pragma once
+#include "../../src/Parser.cpp"
 #include "gtest/gtest.h"
-#include "..\..\src\Parser.h"
 
 TEST(ParserTest, Test_asm)
 {
-	std::ifstream reader("./test.asm");
+	std::ifstream reader("test.asm");
 
-	if(reader.fail() || !reader.is_open()) 
+	if(reader.fail() || !reader.is_open())
 	{
 		FAIL();
 	}
