@@ -7,6 +7,7 @@ projects/*/build
 #ignore vs conf
 projects/**/.vs
 projects/**/.vscode
+projects/**/.idea
 projects/**/out
 projects/**/build
 projects/**/install
@@ -18,5 +19,5 @@ projects/**/test/src/args.py
 
 #ignore the tools they can be dowloaded at
 #URL:https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ
-tools/**
-
+SoftwareSuite/InstallDir
+SoftwareSuite/**/target

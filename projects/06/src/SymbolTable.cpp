@@ -1,4 +1,3 @@
-#pragma once
 #include "SymbolTable.h"
 
 namespace HackAssembler
@@ -18,7 +17,7 @@ namespace HackAssembler
 
     void SymbolTable::addEntry(const std::string& symbol, const uint16_t address)
     {
-        if (address > 65535)
+        if (address > UINT16_MAX)
         {
             throw std::runtime_error(
                 "Buffer overflow caused by symbol: " + symbol + "and an address value of: " + std::to_string(address));

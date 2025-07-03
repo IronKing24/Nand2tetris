@@ -1,7 +1,7 @@
 ﻿# Add source to this project's executable.
-add_executable(${CMAKE_PROJECT_NAME} "Main.cpp" "Parser.cpp" "CodeModule.cpp" "SymbolTable.cpp")
+add_executable(${CMAKE_PROJECT_NAME} Main.cpp Parser.cpp CodeModule.cpp SymbolTable.cpp)
 
-#set compile specs
+# Set compile specs
 target_compile_features(HackAssembler PRIVATE cxx_std_17)
 
 if (MSVC)

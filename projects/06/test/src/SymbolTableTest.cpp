@@ -1,6 +1,5 @@
-#pragma once
+#include "../../src/SymbolTable.cpp"
 #include "gtest/gtest.h"
-#include "..\..\src\SymbolTable.h"
 
 TEST(SymbolTableTest, entry)
 {
