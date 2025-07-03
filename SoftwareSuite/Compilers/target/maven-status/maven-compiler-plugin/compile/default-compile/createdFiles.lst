@@ -1,9 +1,0 @@
-Hack/VirtualMachine/HVMInstruction.class
-Hack/Assembler/AssemblyLineTokenizer.class
-Hack/VirtualMachine/VirtualMachine.class
-Hack/Assembler/HackAssemblerTranslator.class
-Hack/Assembler/AssemblerException.class
-Hack/Assembler/HackAssembler.class
-Hack/VirtualMachine/HVMInstructionSet.class
-Hack/Assembler/HackAssemblerEvent.class
-Hack/Assembler/HackAssemblerGUI.class
