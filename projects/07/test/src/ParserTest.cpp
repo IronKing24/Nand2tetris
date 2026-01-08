@@ -1,17 +1,11 @@
-#pragma once
 #include "gtest/gtest.h"
-#include "..\..\src\Parser.h"
+#include <filesystem>
+#include "../../src/Parser.cpp"
 
 TEST(ParserTest, Test_vm)
 {
-	std::ifstream reader("./test.vm");
-
-	if (reader.fail() || !reader.is_open())
-	{
-		FAIL();
-	}
-
-	VMTranslator::Parser parser(&reader);
+	std::filesystem::path reader("./test.vm");
+	VMTranslator::Parser parser(reader);
 
 	//Arathmatic tests
 

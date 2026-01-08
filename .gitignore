@@ -1,23 +1,21 @@
 #ignore test output
-projects/*/src/*.out
+projects/**/src/*.out
 
 #ignore build result
-projects/*/build
+projects/**/build
 
 #ignore vs conf
 projects/**/.vs
 projects/**/.vscode
 projects/**/.idea
-projects/**/out
 projects/**/build
-projects/**/install
 projects/**/include
 !projects/**/include/CMakeLists.txt
-projects/**s/__pycache__
-projects/**/test/src/args.py
-
-
-#ignore the tools they can be dowloaded at
-#URL:https://drive.google.com/open?id=1xZzcMIUETv3u3sdpM_oTJSTetpVee3KZ
+projects/**/docs
+!projects/**/docs/CMakeLists.txt
+projects/**/__pycache__
+projects/06/test/resources/HackAssembler/**/*.hack
+!projects/06/test/resources/HackAssembler/**/*test.hack
 SoftwareSuite/InstallDir
 SoftwareSuite/**/target
+

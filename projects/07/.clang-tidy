@@ -1,8 +1,17 @@
+---
 Checks: >
-  -*,
-  readability-*,
-  performance-*,
-  portability-*,
-  clang-analyzer-*
+    bugprone-*,
+    cppcoreguidelines-*,
+    hicpp-*,
+    llvm-*,
+    modernize-*,
+    performance-*,
+    portability-*,
+    readability-*,
+    clang-analyzer-*
 WarningsAsErrors: true
-HeaderFilterRegex: '^(include)'
+HeaderFileExtensions: ['h']
+ImplementationFileExtensions: ['cpp']
+HeaderFilterRegex: "^(include)"
+UseColor: true
+FormatStyle: llvm

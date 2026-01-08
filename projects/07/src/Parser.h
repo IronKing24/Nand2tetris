@@ -28,7 +28,7 @@ namespace VMTranslator
 		/**
 		 * \brief Open the input file, and gets ready to parse it.
 		 */
-		explicit Parser(std::ifstream *input_file);
+		explicit Parser(const std::filesystem::path& input_file);
 		~Parser();
 
 		/**
@@ -46,7 +46,7 @@ namespace VMTranslator
 		/**
 		 * \brief Returns a constatnt representing the type of the current command.
 		 */
-		const CommandTypes& commandType();
+		const CommandTypes commandType();
 
 		/**
 		 * \brief Returns the first segment of the current command.
@@ -66,7 +66,7 @@ namespace VMTranslator
         }
 #endif // returns the current command for debugging.
 	private:
-		std::ifstream* input;
+		std::ifstream input;
 		std::string current_command;
 	};
 }

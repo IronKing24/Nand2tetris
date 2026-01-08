@@ -2,7 +2,6 @@ import unittest
 from os import pathsep, remove
 from os.path import exists, abspath
 from subprocess import run
-from args import exe, res, tools, ext
 
 class VMTranslatorTest(unittest.TestCase):
     @classmethod

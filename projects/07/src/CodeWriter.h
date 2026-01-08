@@ -16,7 +16,7 @@ namespace VMTranslator
         /**
          * \brief Opens the output file and gets ready to write to it.
          */
-        explicit CodeWriter(std::filesystem::path output_file);
+        explicit CodeWriter(const std::filesystem::path& output_file);
 		~CodeWriter();
 
         /**

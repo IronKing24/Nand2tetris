@@ -1,24 +1,26 @@
 #include "Parser.h"
+#include <filesystem>
 
 namespace VMTranslator 
 {
-	Parser::Parser(std::ifstream* stream):input(stream)
+	Parser::Parser(const std::filesystem::path& input_path):input(input_path)
 	{
-		if(!input->good() || !input->is_open())
+		input.exceptions(std::ios_base::badbit);
+		if(!input.good() || !input.is_open())
 		{
-			throw std::runtime_error("Parser failed to file stream.");
+			throw std::runtime_error("Was not able to open the file: " + input_path.generic_string());
 		}
 	}
 
 	bool Parser::hasMoreLines() noexcept
 	{
-		while (*input)
+		while (input)
 		{
 			std::string token;
-			std::streampos bookmark = input->tellg();
-			std::getline(*input, token);
+			std::streampos bookmark = input.tellg();
+			std::getline(input, token);
 
-			if (input->eof())
+			if (input.eof())
 			{
 				return false;
 			}
@@ -42,7 +44,7 @@ namespace VMTranslator
 				continue;
 			}
 
-			input->seekg(bookmark);
+			input.seekg(bookmark);
 			return true;
 		}
 		return false;
@@ -51,7 +53,7 @@ namespace VMTranslator
 	void Parser::advance() 
 	{
 		std::string token;
-		std::getline(*input, token);
+		std::getline(input, token);
 
 		//Remove comments and R-trim.
 		std::size_t comment_pos = token.find("//");
@@ -189,9 +191,9 @@ namespace VMTranslator
 
 	Parser::~Parser()
 	{
-		if(input->is_open()) 
+		if(input.is_open()) 
 		{
-			input->close();
+			input.close();
 		}
 	}
 }

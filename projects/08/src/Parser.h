@@ -28,7 +28,7 @@ namespace VMTranslator
 		/**
 		 * \brief Open the input file, and gets ready to parse it.
 		 */
-		explicit Parser(std::ifstream *input_file);
+		explicit Parser(const std::filesystem::path& input_path);
 		~Parser();
 
 		/**
@@ -67,7 +67,7 @@ namespace VMTranslator
 #endif // returns the current command for debugging.
 
 	private:
-		std::ifstream *input;
+		std::ifstream input;
 		std::string current_command;
 	};
 }

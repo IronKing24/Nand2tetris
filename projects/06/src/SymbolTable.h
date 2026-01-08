@@ -6,31 +6,38 @@
 
 namespace HackAssembler
 {
-    class SymbolTable
-    {
+/*
+* Since Hack instructions can contain symbolic references, the assembly
+* process must resolve them into actual addresses. The assembler deals with
+* this task using a symbol table, designed to create and maintain the
+* correspondence between symbols and their meaning (in Hack’s case, RAM
+* and ROM addresses).
+*/
+class SymbolTable
+{
     public:
-        /**
-         * \brief Creates a new empty symbol table.
-         */
-        explicit SymbolTable();
-        ~SymbolTable();
+	/**
+    * \brief Creates a new empty symbol table.
+    */
+	explicit SymbolTable();
+	~SymbolTable();
 
-        /**
-         * \brief Adds < \c symbol , \c address > to the table.
-         */
-        void addEntry(const std::string& symbol, uint16_t address);
+	/**
+    * \brief Adds < \c symbol , \c address > to the table.
+    */
+	void addEntry(const std::string &symbol, uint16_t address);
 
-        /**
-         * \brief Does the symbol table contain the given \c symbol ?
-         */
-        const bool contains(const std::string& symbol) noexcept;
+	/**
+    * \brief Does the symbol table contain the given \c symbol ?
+    */
+	const bool contains(const std::string &symbol) noexcept;
 
-        /**
-         * \brief Returns the address associated with the \c symbol .
-         */
-        const uint16_t getAddress(const std::string& symbol);
+	/**
+    * \brief Returns the address associated with the \c symbol .
+    */
+	const uint16_t getAddress(const std::string &symbol);
 
     private:
-        std::unordered_map<std::string, const uint16_t> symbol_table;
-    };
+	std::unordered_map<std::string, const uint16_t> symbol_table;
+};
 } // namespace HackAssembler

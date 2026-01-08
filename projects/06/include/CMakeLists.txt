@@ -4,8 +4,6 @@ FetchContent_Declare(
 	GoogleTest
 	GIT_REPOSITORY	https://github.com/google/googletest.git
 	GIT_TAG			release-1.12.1
-	SOURCE_DIR		${HackAssembler_SOURCE_DIR}/include/gtest
-	BINARY_DIR		${HackAssembler_BINARY_DIR}/include/gtest
 )
 
 if(WIN32)

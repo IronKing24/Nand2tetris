@@ -1,10 +1,11 @@
 ﻿#include "CodeWriter.h"
+#include <climits>
+#include <string>
 
 namespace VMTranslator 
 {
-	CodeWriter::CodeWriter(std::filesystem::path output_file)
+	CodeWriter::CodeWriter(const std::filesystem::path& output_path):output(output_path, std::ios_base::trunc)
 	{
-		output = std::ofstream(output_file, std::ios_base::trunc);
 		output.exceptions(std::ios_base::badbit | std::ios_base::failbit);
 
 		if (!output.is_open() || !output.good()) 
@@ -12,13 +13,13 @@ namespace VMTranslator
 			throw std::runtime_error("CodeWriter failed to file stream.");
 		}
 
-#ifndef WBS //without bootstrap
+#ifndef WOBS //without bootstrap
 		//the define is for testing
 		output
-			<< "@256" << std::endl
-			<< "D=A" << std::endl
-			<< "@SP" << std::endl
-			<< "M=D" << std::endl;
+			<< "@256\n"
+			<< "D=A\n" 
+			<< "@SP\n" 
+			<< "M=D\n";
 		writeCall("Sys.init", 0);
 #endif
 	}
@@ -33,18 +34,18 @@ namespace VMTranslator
 		if (command == "add" || command == "sub" || command == "and" || command == "or")
 		{
 			output
-				<< "@SP" << std::endl
-				<< "AM=M-1" << std::endl
-				<< "D=M" << std::endl
-				<< "A=A-1" << std::endl
-				<< "M=M" << symbol_table.at(command) << "D" << std::endl;
+				<< "@SP\n"
+				<< "AM=M-1\n"
+				<< "D=M\n"
+				<< "A=A-1\n"
+				<< "M=M" << symbol_table.at(command) << "D\n";
 		}
 		else if (command == "neg" || command == "not")
 		{
 			output
-				<< "@SP" << std::endl
-				<< "A=M-1" << std::endl
-				<< "M="<< symbol_table.at(command) << "M" << std::endl;
+				<< "@SP\n"
+				<< "A=M-1\n"
+				<< "M="<< symbol_table.at(command) << "M\n";
 		}
 		else if (command == "eq" || command == "gt" || command == "lt")
 		{
@@ -62,21 +63,21 @@ namespace VMTranslator
 			}
 
 			output
-				<< "@SP" << std::endl
-				<< "AM=M-1" << std::endl
-				<< "D=M" << std::endl
-				<< "@SP" << std::endl
-				<< "AM=M-1" << std::endl
-				<< "D=M-D" << std::endl
-				<< "M=-1" << std::endl
-				<< "@" << checkName << std::endl
-				<< "D;" << symbol_table.at(command) << std::endl
-				<< "@SP" << std::endl
-				<< "A=M" << std::endl
-				<< "M=0" << std::endl
-				<< "("<< checkName <<")" << std::endl
-				<< "@SP" << std::endl
-				<< "AM=M+1" << std::endl;
+				<< "@SP\n"
+				<< "AM=M-1\n"
+				<< "D=M\n"
+				<< "@SP\n"
+				<< "AM=M-1\n"
+				<< "D=M-D\n"
+				<< "M=-1\n"
+				<< "@" + checkName + '\n'
+				<< "D;" + symbol_table.at(command) + '\n'
+				<< "@SP\n"
+				<< "A=M\n"
+				<< "M=0\n"
+				<< "(" + checkName + ")\n"
+				<< "@SP\n"
+				<< "AM=M+1\n";
 		}
 	}
 	
@@ -87,32 +88,32 @@ namespace VMTranslator
 		case VMTranslator::Parser::CommandTypes::C_PUSH:
 			if (segment == "constant")
 			{
-				if (index < 0 || index > 32767) {
+				if (index < 0 || index > SHRT_MAX) {
 					throw std::runtime_error("Illegal constant value: " + std::to_string(index));
 				}
 
 				output
-					<< '@' << index << std::endl
-					<< "D=A" << std::endl;
+					<< '@' + index + '\n'
+					<< "D=A\n";
 			}
 			else if (segment == "local" || segment == "argument" || segment == "this" || segment == "that")
 			{
-				if (index < 0 || index > 32767) {
+				if (index < 0 || index > SHRT_MAX) {
 					throw std::runtime_error("push " + segment + " index is out of bounds : " + std::to_string(index));
 				}
-				output << "@" << symbol_table.at(segment) << std::endl;
+				output << "@" + symbol_table.at(segment) + '\n';
 				if (index > 0)
 				{
 					output
-						<< "D=M" << std::endl
-						<< "@" << index << std::endl
-						<< "A=D+A" << std::endl;
+						<< "D=M\n"
+						<< "@" + std::to_string(index) + '\n'
+						<< "A=D+A\n";
 				}
 				else
 				{
-					output << "A=M" << std::endl;
+					output << "A=M\n";
 				}
-				output << "D=M" << std::endl;
+				output << "D=M\n";
 			}
 			else if (segment == "pointer")
 			{
@@ -122,8 +123,8 @@ namespace VMTranslator
 				}
 
 				output
-					<< "@R" << index + 3 << std::endl
-					<< "D=M" << std::endl;
+					<< "@R" + std::to_string(index + 3) + '\n'
+					<< "D=M\n";
 
 			}
 			else if (segment == "temp")
@@ -134,8 +135,8 @@ namespace VMTranslator
 				}
 
 				output
-					<< "@R" << index + 5 << std::endl
-					<< "D=M" << std::endl;
+					<< "@R" << std::to_string(index + 5) + '\n'
+					<< "D=M\n";
 			}
 			else if ("static")
 			{
@@ -147,47 +148,47 @@ namespace VMTranslator
 					throw std::runtime_error("the static address does not exist for the push operation of: " + label);
 				}
 				output
-					<< "@" << current_file_name << "." << index << std::endl
-					<< "D=M" << std::endl;
+					<< "@" + current_file_name + "." + std::to_string(index) + '\n'
+					<< "D=M\n";
 			}
 			else
 			{
 				throw std::runtime_error("Illegal push segment: " + segment);
 			}
 			output
-				<< "@SP" << std::endl
-				<< "A=M" << std::endl
-				<< "M=D" << std::endl
-				<< "@SP" << std::endl
-				<< "M=M+1" << std::endl;
+				<< "@SP\n"
+				<< "A=M\n"
+				<< "M=D\n"
+				<< "@SP\n"
+				<< "M=M+1\n";
 			break;
 
 		case VMTranslator::Parser::CommandTypes::C_POP:
 			if (segment == "local" || segment == "argument" || segment == "this" || segment == "that")
 			{
-				if (index < 0 || index > 32767) {
+				if (index < 0 || index > SHRT_MAX) {
 					throw std::runtime_error("pop " + segment + " index is out of bounds : " + std::to_string(index));
 				}
 
 				output
-					<< "@" << symbol_table.at(segment) << std::endl
-					<< "D=M" << std::endl;
+					<< "@" + symbol_table.at(segment) + '\n'
+					<< "D=M\n";
 
 				if (index > 0) 
 				{
 					output
-						<< "@" << index << std::endl
-						<< "D=D+A" << std::endl;
+						<< "@" + std::to_string(index) + '\n'
+						<< "D=D+A\n";
 				}
 				output
-					<< "@R13" << std::endl 
-					<< "M=D" << std::endl 
-					<< "@SP" << std::endl 
-					<< "AM=M-1" << std::endl
-					<< "D=M" << std::endl
-					<< "@R13" << std::endl
-					<< "A=M" << std::endl
-					<< "M=D" << std::endl;
+					<< "@R13\n"
+					<< "M=D\n"
+					<< "@SP\n"
+					<< "AM=M-1\n"
+					<< "D=M\n"
+					<< "@R13\n"
+					<< "A=M\n"
+					<< "M=D\n";
 				break;
 			}
 			else if (segment == "pointer")
@@ -197,11 +198,11 @@ namespace VMTranslator
 					throw new std::runtime_error("Illegal push to the pointer segment, index is out of bounds: " + std::to_string(index));
 				}
 				output
-					<< "@SP" << std::endl
-					<< "AM=M-1" << std::endl
-					<< "D=M" << std::endl
-					<< "@R" << index + 3 << std::endl
-					<< "M=D" << std::endl;
+					<< "@SP\n"
+					<< "AM=M-1\n"
+					<< "D=M\n"
+					<< "@R" + std::to_string(index + 3) + '\n'
+					<< "M=D\n";
 			}
 			else if (segment == "temp")
 			{
@@ -210,11 +211,11 @@ namespace VMTranslator
 					throw std::runtime_error("Illegal push to the temp segment, index is out of bounds: " + std::to_string(index));
 				}
 				output
-					<< "@SP" << std::endl
-					<< "AM=M-1" << std::endl
-					<< "D=M" << std::endl
-					<< "@R" << index + 5 << std::endl
-					<< "M=D" << std::endl;
+					<< "@SP\n"
+					<< "AM=M-1\n"
+					<< "D=M\n"
+					<< "@R" + std::to_string(index + 5) + '\n'
+					<< "M=D\n";
 			}
 			else if ("static")
 			{
@@ -228,11 +229,11 @@ namespace VMTranslator
 				}
 
 				output
-					<< "@SP" << std::endl
-					<< "AM=M-1" << std::endl
-					<< "D=M" << std::endl
-					<< '@' << current_file_name << '.' << index << std::endl
-					<< "M=D" << std::endl;
+					<< "@SP\n"
+					<< "AM=M-1\n"
+					<< "D=M\n"
+					<< '@' + current_file_name + '.' + std::to_string(index) + '\n'
+					<< "M=D\n";
 
 			}
 			else 
@@ -248,31 +249,31 @@ namespace VMTranslator
 	void CodeWriter::writeLabel(const std::string& label)
 	{
 		output
-			<< '(' << current_function_name << '$' << label << ')' << std::endl;
+			<< '(' + current_function_name + '$' + label + ')' + '\n';
 	}
 
 	void CodeWriter::writeGoto(const std::string& label)
 	{
 		output 
-			<< '@' << current_function_name << '$' << label << std::endl
-			<< "0;JMP" << std::endl;
+			<< '@' + current_function_name + '$' + label + '\n'
+			<< "0;JMP\n";
 	}
 
 	void CodeWriter::writeIf(const std::string& label)
 	{
 		output
-			<< "@SP" << std::endl
-			<< "AM=M-1" << std::endl
-			<< "D=M" << std::endl
-			<< '@' << current_function_name << '$' << label << std::endl
-			<< "D;JNE" << std::endl;
+			<< "@SP\n"
+			<< "AM=M-1\n"
+			<< "D=M\n"
+			<< '@' + current_function_name + '$' + label + '\n'
+			<< "D;JNE\n";
 	}
 
 	void CodeWriter::writeFunction(const std::string& functionName, const int nVars)
 	{
 		current_function_name = functionName;
 		output
-			<< '(' << functionName << ')' << std::endl;
+			<< '(' + functionName + ')' + '\n';
 		//initialize locals to 0
 		for (int i = 0; i < nVars; i++) {
 			CodeWriter::writePushPop(Parser::CommandTypes::C_PUSH, "constant", 0);
@@ -297,38 +298,38 @@ namespace VMTranslator
 
 			//push return address
 			output
-			<< '@' << returnAddress << std::endl
-			<< "D=A" << std::endl
-			<< "@SP" << std::endl
-			<< "A=M" << std::endl
-			<< "M=D" << std::endl
-			<< "@SP" << std::endl
-			<< "M=M+1" << std::endl;
+			<< '@' + returnAddress + '\n'
+			<< "D=A\n"
+			<< "@SP\n"
+			<< "A=M\n"
+			<< "M=D\n"
+			<< "@SP\n"
+			<< "M=M+1\n";
 
 		for (int i = 1; i < 5; i++) {
 			output
-				<< "@R" << i << std::endl
-				<< "D=M" << std::endl
-				<< "@SP" << std::endl
-				<< "A=M" << std::endl
-				<< "M=D" << std::endl
-				<< "@SP" << std::endl
-				<< "M=M+1" << std::endl;
+				<< "@R" + std::to_string(i) + '\n'
+				<< "D=M\n"
+				<< "@SP\n"
+				<< "A=M\n"
+				<< "M=D\n"
+				<< "@SP\n"
+				<< "M=M+1\n";
 		}
 		output
 			//lcl = sp
-			<< "@SP" << std::endl
-			<< "D=M" << std::endl
-			<< "@LCL" << std::endl
-			<< "M=D" << std::endl
+			<< "@SP\n"
+			<< "D=M\n"
+			<< "@LCL\n"
+			<< "M=D\n"
 			//arg = sp-5-nArgs
-			<< '@' << nVars + 5 << std::endl
-			<< "D=D-A" << std::endl
-			<< "@ARG" << std::endl
-			<< "M=D" << std::endl
-			<< '@' << functionName << std::endl
-			<< "0;JMP" << std::endl
-			<< '(' << returnAddress << ')' << std::endl;
+			<< '@' + std::to_string(nVars + 5) + '\n'
+			<< "D=D-A\n"
+			<< "@ARG\n"
+			<< "M=D\n"
+			<< '@' + functionName + '\n'
+			<< "0;JMP\n"
+			<< '(' + returnAddress + ')' + '\n';
 	}
 
 	void CodeWriter::writeReturn()
@@ -336,45 +337,45 @@ namespace VMTranslator
 		//set temp vars
 		output
 			//frame (R14) = LCL
-			<< "@LCL" << std::endl
-			<< "D=M" << std::endl
-			<< "@R14" << std::endl
-			<< "M=D" << std::endl
+			<< "@LCL\n"
+			<< "D=M\n"
+			<< "@R14\n"
+			<< "M=D\n" 
 			//return address = *(frame - 5)
-			<< "@5" << std::endl
-			<< "A=D-A" << std::endl
-			<< "D=M" << std::endl
-			<< "@R15" << std::endl
-			<< "M=D" << std::endl;
+			<< "@5\n"
+			<< "A=D-A\n"
+			<< "D=M\n"
+			<< "@R15\n"
+			<< "M=D\n";
 		writePushPop(Parser::CommandTypes::C_POP, "argument", 0);
 		output
 			//SP = ARG + 1
-			<< "@ARG" << std::endl
-			<< "D=M+1" << std::endl
-			<< "@SP" << std::endl
-			<< "M=D" << std::endl;
+			<< "@ARG\n"
+			<< "D=M+1\n"
+			<< "@SP\n"
+			<< "M=D\n";
 		//Ri=*(frame-i)
 		for (int i = 4; i > 0; i--) {
 			output
-				<< "@R14" << std::endl
-				<< "AM=M-1" << std::endl
-				<< "D=M" << std::endl
-				<< "@R" << i << std::endl
-				<< "M=D" << std::endl;
+				<< "@R14\n"
+				<< "AM=M-1\n"
+				<< "D=M\n"
+				<< "@R" + std::to_string(i) + '\n'
+				<< "M=D\n";
 		}
 		output
 			//go to return address
-			<< "@R15" << std::endl
-			<< "A=M" << std::endl
-			<< "0;JMP" << std::endl;
+			<< "@R15\n"
+			<< "A=M\n"
+			<< "0;JMP\n";
 	}
 
 	void CodeWriter::close()
 	{
 		output
-			<< "(end)" << std::endl
-			<< "@end" << std::endl
-			<< "0;JMP" << std::endl;
+			<< "(end)\n"
+			<< "@end\n"
+			<< "0;JMP\n";
 		output.flush();
 		output.close();
 	}

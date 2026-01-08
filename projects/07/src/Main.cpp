@@ -1,16 +1,17 @@
 #include "Main.h"
 
+
 int main(int argc, char* argv[])
 {
 	if (argc != 2)
 	{
 		std::cout
-			<< "Nand2Tetris' Virtual machine translator" << std::endl
-			<< std::endl
-			<< "Author: IronKing24" << std::endl
-			<< "Version: 1.0.0" << std::endl
-			<< std::endl
-			<< "Please, insert Nand2Tetris .vm file path as an argument to get Nand2Tetris .asm file." << std::endl;
+			<< "Nand2Tetris' Virtual machine translator" << '\n'
+			<< '\n'
+			<< "Author: IronKing24" << '\n'
+			<< "Version: 1.0.0" << '\n'
+			<< '\n'
+			<< "Please, insert Nand2Tetris .vm file path as an argument to get Nand2Tetris .asm file." << '\n';
 		return 0;
 	}
 
@@ -18,7 +19,7 @@ int main(int argc, char* argv[])
 
 	if (!std::filesystem::exists(in_path))
 	{
-		std::cerr << "Can not locate a directory or Nand2Tetris .vm file at: " << in_path.generic_string() << std::endl;
+		std::cerr << "Can not locate a directory or Nand2Tetris .vm file at: " << in_path.generic_string();
 		return 1;
 	}
 	
@@ -30,7 +31,7 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-			std::cerr << "The supplied file is not a valid Nand2Tetris .vm but it is: " << in_path.extension().generic_string() << std::endl;
+			std::cerr << "The supplied file is not a valid Nand2Tetris .vm but it is: " << in_path.extension().generic_string();
 			return 1;
 		}
 	}
@@ -41,20 +42,11 @@ int main(int argc, char* argv[])
 	}
 
     // open vm file
-    std::ifstream input_stream(in_path);
-    input_stream.exceptions(std::ios_base::badbit);
-
-	if (!input_stream)
-	{
-		std::cerr << "Was not able to open the file: " + in_path.generic_string() << std::endl;
-		return 1;
-	}
-
     VMTranslator::CodeWriter writer(VMTranslator::out_path);
 	
 	try
 	{
-		VMTranslator::Parser parser(&input_stream);
+		VMTranslator::Parser parser(in_path);
 
 		while (parser.hasMoreLines()) 
 		{
@@ -78,12 +70,9 @@ int main(int argc, char* argv[])
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what();
-		input_stream.close();
 		writer.close();
 		return 1;
 	}
-
-	input_stream.close();
 
 	writer.close();
 	return 0;

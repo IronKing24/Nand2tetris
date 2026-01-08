@@ -1,11 +1,11 @@
 ﻿#pragma once
 #include "CodeWriter.h"
+#include <string>
 
 namespace VMTranslator 
 {
-	CodeWriter::CodeWriter(std::filesystem::path output_file)
+	CodeWriter::CodeWriter(const std::filesystem::path& output_file): output(output_file, std::ios_base::trunc)
 	{
-		CodeWriter::output = std::ofstream(output_file, std::ios_base::trunc);
 		CodeWriter::output.exceptions(std::ios_base::badbit | std::ios_base::failbit);
 
 		if (!output.is_open() || !output.good()) 
@@ -19,18 +19,18 @@ namespace VMTranslator
 		if (command == "add" || command == "sub" || command == "and" || command == "or")
 		{
 			output
-				<< "@SP" << std::endl
-				<< "AM=M-1" << std::endl
-				<< "D=M" << std::endl
-				<< "A=A-1" << std::endl
-				<< "M=M" << symbol_table.at(command) << "D" << std::endl;
+				<< "@SP\n"
+				<< "AM=M-1\n"
+				<< "D=M\n" 
+				<< "A=A-1\n"
+				<< "M=M" << symbol_table.at(command) << "D\n";
 		}
 		else if (command == "neg" || command == "not")
 		{
 			output
-				<< "@SP" << std::endl
-				<< "A=M-1" << std::endl
-				<< "M="<< symbol_table.at(command) << "M" << std::endl;
+				<< "@SP\n"
+				<< "A=M-1\n"
+				<< "M="<< symbol_table.at(command) << "M\n";
 		}
 		else if (command == "eq" || command == "gt" || command == "lt")
 		{
@@ -48,21 +48,21 @@ namespace VMTranslator
 			}
 
 			output
-				<< "@SP" << std::endl
-				<< "AM=M-1" << std::endl
-				<< "D=M" << std::endl
-				<< "@SP" << std::endl
-				<< "AM=M-1" << std::endl
-				<< "D=M-D" << std::endl
-				<< "M=-1" << std::endl
-				<< "@" << checkName << std::endl
-				<< "D;" << symbol_table.at(command) << std::endl
-				<< "@SP" << std::endl
-				<< "A=M" << std::endl
-				<< "M=0" << std::endl
-				<< "("<< checkName <<")" << std::endl
-				<< "@SP" << std::endl
-				<< "AM=M+1" << std::endl;
+				<< "@SP\n"
+				<< "AM=M-1\n"
+				<< "D=M\n"
+				<< "@SP\n"
+				<< "AM=M-1\n"
+				<< "D=M-D\n"
+				<< "M=-1\n"
+				<< "@" << checkName << '\n'
+				<< "D;" << symbol_table.at(command) << '\n'
+				<< "@SP\n" 
+				<< "A=M\n"
+				<< "M=0\n"
+				<< "("<< checkName <<")\n"
+				<< "@SP\n"
+				<< "AM=M+1\n";
 		}
 	}
 	
@@ -78,27 +78,27 @@ namespace VMTranslator
 				}
 
 				output
-					<< '@' << index << std::endl
-					<< "D=A" << std::endl;
+					<< '@' << index << '\n'
+					<< "D=A\n";
 			}
 			else if (segment == "local" || segment == "argument" || segment == "this" || segment == "that")
 			{
 				if (index < 0 || index > 32767) {
 					throw std::runtime_error("push " + segment + " index is out of bounds : " + std::to_string(index));
 				}
-				output << "@" << symbol_table.at(segment) << std::endl;
+				output << "@" << symbol_table.at(segment) << '\n';
 				if (index > 0)
 				{
 					output
-						<< "D=M" << std::endl
-						<< "@" << index << std::endl
-						<< "A=D+A" << std::endl;
+						<< "D=M\n"
+						<< "@" << index << '\n'
+						<< "A=D+A\n";
 				}
 				else
 				{
-					output << "A=M" << std::endl;
+					output << "A=M\n";
 				}
-				output << "D=M" << std::endl;
+				output << "D=M\n";
 			}
 			else if (segment == "pointer")
 			{
@@ -108,8 +108,8 @@ namespace VMTranslator
 				}
 
 				output
-					<< "@R" << index + 3 << std::endl
-					<< "D=M" << std::endl;
+					<< "@R" << index + 3 << '\n'
+					<< "D=M\n";
 
 			}
 			else if (segment == "temp")
@@ -120,32 +120,31 @@ namespace VMTranslator
 				}
 
 				output
-					<< "@R" << index + 5 << std::endl
-					<< "D=M" << std::endl;
+					<< "@R" << index + 5 << '\n'
+					<< "D=M\n";
 			}
 			else if ("static")
 			{
 				std::string label = current_fileName + "." + std::to_string(index);
 
-				if (std::find_if(statics.cbegin(), statics.cend(),
-					[&](std::string s) {return s == label; }) != statics.cend())
+				if (std::find_if(statics.cbegin(), statics.cend(), [&](std::string s) {return s == label; }) != statics.cend())
 				{
 					throw std::runtime_error("the static address does not exist for the push operation of: " + label);
 				}
 				output
-					<< "@" << current_fileName << "." << index << std::endl
-					<< "D=M" << std::endl;
+					<< "@" << current_fileName << "." << index << '\n'
+					<< "D=M\n";
 			}
 			else
 			{
 				throw std::runtime_error("Illegal push segment: " + segment);
 			}
 			output
-				<< "@SP" << std::endl
-				<< "A=M" << std::endl
-				<< "M=D" << std::endl
-				<< "@SP" << std::endl
-				<< "M=M+1" << std::endl;
+				<< "@SP\n"
+				<< "A=M\n"
+				<< "M=D\n"
+				<< "@SP\n"
+				<< "M=M+1\n";
 			break;
 
 		case VMTranslator::Parser::CommandTypes::C_POP:
@@ -156,51 +155,51 @@ namespace VMTranslator
 				}
 
 				output
-					<< "@" << symbol_table.at(segment) << std::endl
-					<< "D=M" << std::endl;
+					<< "@" << symbol_table.at(segment) << '\n'
+					<< "D=M\n";
 
 				if (index > 0) 
 				{
 					output
-						<< "@" << index << std::endl
-						<< "D=D+A" << std::endl;
+						<< "@" << index << '\n'
+						<< "D=D+A\n";
 				}
 				output
-					<< "@R13" << std::endl 
-					<< "M=D" << std::endl 
-					<< "@SP" << std::endl 
-					<< "AM=M-1" << std::endl
-					<< "D=M" << std::endl
-					<< "@R13" << std::endl
-					<< "A=M" << std::endl
-					<< "M=D" << std::endl;
+					<< "@R13\n" 
+					<< "M=D\n" 
+					<< "@SP\n" 
+					<< "AM=M-1\n"
+					<< "D=M\n"
+					<< "@R13\n"
+					<< "A=M\n"
+					<< "M=D\n";
 				break;
 			}
 			else if (segment == "pointer")
 			{
 				if (index < 0 || index > 2)
 				{
-					throw new std::runtime_error("Illegal push to the pointer segment, index is out of bounds: " + index);
+					throw new std::runtime_error("Illegal push to the pointer segment, index is out of bounds: " + std::to_string(index));
 				}
 				output
-					<< "@SP" << std::endl
-					<< "AM=M-1" << std::endl
-					<< "D=M" << std::endl
-					<< "@R" << index + 3 << std::endl
-					<< "M=D" << std::endl;
+					<< "@SP\n"
+					<< "AM=M-1\n"
+					<< "D=M\n"
+					<< "@R" << index + 3 << '\n'
+					<< "M=D\n";
 			}
 			else if (segment == "temp")
 			{
 				if (index < 0 || index > 7)
 				{
-					throw std::runtime_error("Illegal push to the temp segment, index is out of bounds: " + index);
+					throw std::runtime_error("Illegal push to the temp segment, index is out of bounds: " + std::to_string(index));
 				}
 				output
-					<< "@SP" << std::endl
-					<< "AM=M-1" << std::endl
-					<< "D=M" << std::endl
-					<< "@R" << index + 5 << std::endl
-					<< "M=D" << std::endl;
+					<< "@SP\n"
+					<< "AM=M-1\n"
+					<< "D=M\n"
+					<< "@R" << index + 5 << '\n'
+					<< "M=D\n";
 			}
 			else if ("static")
 			{
@@ -214,11 +213,11 @@ namespace VMTranslator
 				}
 
 				output
-					<< "@SP" << std::endl
-					<< "AM=M-1" << std::endl
-					<< "D=M" << std::endl
-					<< '@' << current_fileName << '.' << index << std::endl
-					<< "M=D" << std::endl;
+					<< "@SP\n"
+					<< "AM=M-1\n"
+					<< "D=M\n"
+					<< '@' << current_fileName << '.' << index << '\n'
+					<< "M=D\n";
 
 			}
 			else 
@@ -235,9 +234,9 @@ namespace VMTranslator
 	void CodeWriter::close()
 	{
 		output
-			<< "(end)" << std::endl
-			<< "@end" << std::endl
-			<< "0;JMP" << std::endl;
+			<< "(end)\n"
+			<< "@end\n"
+			<< "0;JMP\n";
 		output.flush();
 		output.close();
 	}

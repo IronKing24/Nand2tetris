@@ -3,25 +3,24 @@
 
 namespace VMTranslator 
 {
-	Parser::Parser(std::ifstream* stream)
+	Parser::Parser(const std::filesystem::path& input_file) : input(input_file)
 	{
-		input = stream;
-
-		if(!input->good() || !input->is_open())
+		if(!input.good() || !input.is_open())
 		{
-			throw std::runtime_error("Parser failed to file stream.");
+			throw std::runtime_error("Parser was not able to open the file: " + input_file.string());
 		}
+		input.exceptions(std::ios_base::badbit);
 	}
 
 	bool Parser::hasMoreLines() noexcept
 	{
-		while (*input)
+		while (input)
 		{
 			std::string token;
-			std::streampos bookmark = input->tellg();
-			std::getline(*input, token);
+			std::streampos bookmark = input.tellg();
+			std::getline(input, token);
 
-			if (input->eof())
+			if (input.eof())
 			{
 				return false;
 			}
@@ -45,7 +44,7 @@ namespace VMTranslator
 				continue;
 			}
 
-			input->seekg(bookmark);
+			input.seekg(bookmark);
 			return true;
 		}
 		return false;
@@ -53,8 +52,13 @@ namespace VMTranslator
 
 	void Parser::advance() 
 	{
+		if(!hasMoreLines())
+		{
+			throw std::runtime_error("End of file has been reached.");
+		}
+
 		std::string token;
-		std::getline(*input, token);
+		std::getline(input, token);
 
 		//Remove comments and R-trim.
 		std::size_t comment_pos = token.find("//");
@@ -109,7 +113,7 @@ namespace VMTranslator
 		current_command = token;
 	}
 
-	const Parser::CommandTypes& Parser::commandType()
+	const Parser::CommandTypes Parser::commandType()
 	{
 		std::string type = current_command.substr(0, current_command.find(' '));
 		if (type == "add" || type == "sub" || type == "neg" ||	//arithmetic
@@ -168,9 +172,9 @@ namespace VMTranslator
 
 	Parser::~Parser()
 	{
-		if(input->is_open()) 
+		if(input.is_open()) 
 		{
-			input->close();
+			input.close();
 		}
 	}
 }
